@@ -1,0 +1,9 @@
+{
+  "name": "Hearts Whisper",
+  "short_name": "Hearts",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    { "src": "/THW_Logo.webp", "sizes": "192x192", "type": "image/webp"}
+  ]
+}

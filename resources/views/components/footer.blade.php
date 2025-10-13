@@ -1,5 +1,5 @@
-<footer>
+<footer class="site-footer-root">
     <div class="site-footer">
-        <p>&copy; {{ date('Y') }} Hearts Whisper</p>
+        <img src="Asset/Components/Footer/FOOTER.svg" alt="Hearts Whisper Footer">
     </div>
 </footer>

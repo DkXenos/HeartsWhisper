@@ -1,4 +1,9 @@
 
+@import './footer.css';
+@import './navbar.css';
+@import './homepage.css';
+@import './fonts.css';
+
 /*
  | site.css
  | Minimal, well-structured scaffold CSS for Hearts Whisper
@@ -40,7 +45,7 @@ img { max-width: 100%; display: block; }
 /* -----------------------------
      Layout: header / nav / container / footer
      ----------------------------- */
-header, nav, footer, main, aside, section {
+/* header, nav, footer, main, aside, section {
     padding: 16px 0;
     border-bottom: 1px solid var(--border);
 }
@@ -59,6 +64,7 @@ header, nav, footer, main, aside, section {
     display: flex;
     gap: 16px;
     align-items: center;
+    background-color: aqua;
 }
 .main-nav li { margin: 0; }
 .main-nav a { padding: 6px 10px; border-radius: 6px; }
@@ -71,26 +77,24 @@ header, nav, footer, main, aside, section {
     display: grid;
     grid-template-columns: 1fr 300px;
     gap: var(--gap);
-}
+} */
 
-.site-footer { padding: 18px var(--container-padding); background: transparent; }
-.site-footer p { margin: 0; color: var(--muted); font-size: .95rem; }
 
 
 /* -----------------------------
      Main / Sidebar / Sections
      ----------------------------- */
-main { background: var(--bg); padding: 16px; border-radius: 8px; }
+/* main { background: var(--bg); padding: 16px; border-radius: 8px; }
 .sidebar { background: #fafafa; padding: 12px; border-radius: 8px; }
 
 section { margin-bottom: 18px; }
-section h2 { margin-top: 0; }
+section h2 { margin-top: 0; } */
 
 
 /* -----------------------------
      Small components: card, button, badge
      ----------------------------- */
-.card {
+/* .card {
     background: #fff;
     border: 1px solid var(--border);
     padding: 14px;
@@ -107,13 +111,13 @@ section h2 { margin-top: 0; }
     color: #fff;
     font-weight: 600;
 }
-.btn.ghost { background: transparent; color: #111; border: 1px solid var(--border); }
+.btn.ghost { background: transparent; color: #111; border: 1px solid var(--border); } */
 
 
 /* -----------------------------
      Forms
      ----------------------------- */
-.form-group { margin-bottom: 12px; }
+/* .form-group { margin-bottom: 12px; }
 .form-label { display: block; font-size: .95rem; margin-bottom: 6px; }
 .form-control {
     width: 100%;
@@ -121,20 +125,22 @@ section h2 { margin-top: 0; }
     border-radius: 6px;
     border: 1px solid var(--border);
     background: #fff;
-}
+} */
 
 
 /* -----------------------------
      Utilities (spacing / helpers)
      ----------------------------- */
-.muted { color: var(--muted); }
-.stack { display:flex; flex-direction:column; gap:12px; }
+/* .muted { color: var(--muted); }
+.stack { display:flex; flex-direction:column; gap:12px; } */
 
 
 /* -----------------------------
      Responsive
      ----------------------------- */
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
     .container { grid-template-columns: 1fr; padding: 16px; }
     .main-nav { gap: 8px; padding-left: 16px; }
-}
+} */
+
+
