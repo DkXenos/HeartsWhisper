@@ -5,3 +5,10 @@
     font-style: normal;
     font-display: swap; /* Improves performance */
 }
+@font-face {
+    font-family: 'Comfortaa-Bold';
+    src: url('/fonts/Comfortaa-Bold.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Improves performance */
+}

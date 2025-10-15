@@ -1,10 +1,11 @@
 <nav class="navbar">
     <div class="navbar-container">
         <div class="navbar-brand" href="#">
-            <img src="{{ asset('Asset/Components/Navbar/bg-full.svg') }}" alt="Hearts Whisper Logo" 
+            <img src="{{ asset('Asset/Components/Navbar/navbarnew3.svg') }}" alt="Hearts Whisper Logo" 
             class="logobg">
-            {{-- <img src="{{ asset('Asset/Components/Navbar/bg-nav.svg') }}" alt="Hearts Whisper Logo" 
-            class="bgnav"> --}}
+            <img src="{{ asset('Asset/Components/Navbar/ribbonnew.svg') }}" alt="Hearts Whisper Logo" 
+            class="ribbon">
+            
         </div>
         <ul class="nav main-nav-list">
             <li class="nav-item">

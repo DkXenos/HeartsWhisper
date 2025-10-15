@@ -5,10 +5,10 @@
     text-decoration: none;
     color: #333;
     font-weight: bold;
-    --button-left-gradient: #b84c65;
+    --button-left-gradient: #ffb5d7;
     --button-right-gradient: #ffb5d7;
-    --button-left-border: #f2b028;
-    --button-right-border: #fff0b8;
+    --button-left-border: #FFFDF5;
+    --button-right-border: #FFFDF5;
     background-image: linear-gradient(
             90deg,
             var(--button-left-gradient),
@@ -47,9 +47,6 @@
 }
 
 .navbar {
-    cursor: pointer;
-    border: 4px solid transparent;
-    padding: 0.5rem 1rem;
     text-decoration: none;
     color: #333;
     font-weight: bold;
@@ -70,14 +67,13 @@
     background-origin: border-box;
     background-clip: padding-box, border-box;
     transition: --button-left-gradient 300ms, --button-right-gradient 300ms;
-    border-radius: 2rem;
     font-size: 1.5rem;
     font: bold;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding-right: 1rem;
     z-index: 2;
     position: relative;
 }
@@ -93,17 +89,26 @@
     position: absolute;
     height: auto;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
     top: -1.5rem;
     left: 0;
 }
-.bgnav {
+.bgnav{
     position: absolute;
     height: auto;
     width: 100%;
-    z-index: 0;
-    top: -1.5rem;
+    z-index: 1;
+    top: 3rem;
     left: 0;
+}
+.ribbon {
+    position: absolute;
+    height: auto;
+    width: 50rem;
+    z-index: 0;
+    top: 5rem;
+    right: 0rem;
+    z-index: 2;
 }
 
 .logoimg {
@@ -125,6 +130,6 @@
     padding-top: 2rem;
     padding-bottom: 2rem;
     position: relative;
-    z-index: 2;
+    z-index: 5;
     font-family: 'Comfortaa';
 }

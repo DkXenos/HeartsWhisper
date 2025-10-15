@@ -3,17 +3,17 @@
 @section('title', 'Homepage - Hearts Whisper')
 
 @section('content')
-    <img src="{{ asset('asset/homepage/background.svg') }}" alt="Homepage Background" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+    <img src="{{ asset('asset/homepage/mainbg.svg') }}" alt="Homepage Background"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
 
     <section id="hero">
         <div class="hero-root">
-            <img src="asset/homepage/pillar-left.svg" alt=""
-            class="pillar-left">
-            <img src="asset/homepage/pillar-right.svg" alt=""
-            class="pillar-right">
+            <img src="asset/homepage/pillar-left.svg" alt="" class="pillar-left">
+            <img src="asset/homepage/pillar-right.svg" alt="" class="pillar-right">
             <div class="hero-bg">
                 <div class="hero-content-1">
-                    
+                    <img src="asset/homepage/maintitle.svg" alt="maintitle" class="maintitle">
+                    <img src="asset/homepage/introduction.svg" alt="borderwtext" class="hero1img">
                 </div>
                 <div class="hero-content-2">
                     <img src="asset/homepage/coming-soon.svg" alt="coming soon">
@@ -22,3 +22,11 @@
         </div>
     </section>
 @endsection
+
+{{-- In today’s world, many young people grow up learning about love and relationships through movies, dramas, and social 
+media. Where they’re media that often romanticize unhealthy behaviors such as jealousy, manipulation, obsession, or 
+emotional dependence as “true love.” Over time, this will shape how they see relationships and could even lead them into 
+unhealthy, even toxic ones without realizing it. This research explores Love Psychology, focusing on how understanding 
+healthy relationships and communication styles will promote healthier relationships and reduce the number of individuals 
+harmed by toxic dynamics. 
+ --}}
