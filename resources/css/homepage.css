@@ -25,16 +25,22 @@
     align-items: center;
     flex-direction: column;
 }
-.hero1img{
+.dearnew {
+    width: 35rem;
+    height: auto;
+    margin-top: -10rem;
+    margin-bottom: 5rem;
+}
+
+.hero1img {
     width: 60rem;
     height: auto;
+    z-index: 1;
+    margin-bottom: 5rem;
 }
 .hero-content-2 {
-    background-color: #ffb5d800;
-    width: 60rem;
-    height: 20rem;
-    border-radius: 2rem;
-    opacity: 100%;
+}
+.comingsoon{
 }
 .pillar-left {
     height: auto;

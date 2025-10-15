@@ -12,11 +12,11 @@
             <img src="asset/homepage/pillar-right.svg" alt="" class="pillar-right">
             <div class="hero-bg">
                 <div class="hero-content-1">
-                    <img src="asset/homepage/maintitle.svg" alt="maintitle" class="maintitle">
+                    <img src="asset/homepage/dear6.svg" alt="dear" class="dearnew">
                     <img src="asset/homepage/introduction.svg" alt="borderwtext" class="hero1img">
                 </div>
                 <div class="hero-content-2">
-                    <img src="asset/homepage/coming-soon.svg" alt="coming soon">
+                    <img src="asset/homepage/coming-soon.svg" alt="coming soon" class="comingsoon">
                 </div>
             </div>
         </div>
