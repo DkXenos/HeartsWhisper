@@ -9,15 +9,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PostFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            // Secara otomatis mengambil user_id acak dari user yang ada
+            'user_id' => User::inRandomOrder()->first()->id,
+            'content' => fake()->paragraph(5), // Membuat paragraf palsu dengan 5 kalimat
+            'likes_count' => fake()->numberBetween(0, 500),
         ];
     }
 }

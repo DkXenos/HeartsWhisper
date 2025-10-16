@@ -16,7 +16,6 @@ class UserFactory extends Factory
         return [
             'username' => fake()->unique()->userName(),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
             'password' => Hash::make('password'), // 'password' akan menjadi password untuk semua user dummy
             'gender' => fake()->randomElement(['male', 'female']),
             'role' => 'user', // Default role untuk user dummy

@@ -15,11 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->enum('role', ['user', 'moderator', 'admin'])->default('user');
             $table->unsignedInteger('total_posts')->default(0);
             $table->unsignedInteger('total_likes')->default(0);
+            
+            $table->rememberToken(); 
+            
             $table->timestamps();
         });
     }

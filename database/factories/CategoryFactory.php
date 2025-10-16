@@ -9,15 +9,14 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CategoryFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
+        // Ambil salah satu nama kategori secara acak dari daftar ini
+        $name = fake()->unique()->randomElement(['Heartbreak', 'Life Lesson', 'Good News', 'Tea', 'Motivation', 'Career']);
+
         return [
-            //
+            'name' => $name,
+            'slug' => Str::slug($name), // Membuat URL-friendly slug, e.g., 'life-lesson'
         ];
     }
 }
