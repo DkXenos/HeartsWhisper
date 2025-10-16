@@ -6,43 +6,10 @@ use Illuminate\Http\Request;
 
 class Routing extends Controller
 {
-	/**
-	 * Show the homepage skeleton.
-	 */
-	public function homepage()
-	{
-		return view('homepage');
+	public function showGuides(){
+		return view('guides');
 	}
-
-	/**
-	 * About page
-	 */
-	public function about()
-	{
-		return view('about');
-	}
-
-	/**
-	 * Forum index
-	 */
-	public function forum()
-	{
+	public function showForums(){
 		return view('forum');
-	}
-
-	/**
-	 * User dashboard
-	 */
-	public function dashboard()
-	{
-		return view('dashboard');
-	}
-
-	/**
-	 * Profile
-	 */
-	public function profile()
-	{
-		return view('profile');
 	}
 }

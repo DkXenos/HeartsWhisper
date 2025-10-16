@@ -9,13 +9,13 @@
         </div>
         <ul class="nav main-nav-list">
             <li class="nav-item">
-                <a class="button-navbar" aria-current="page" href="#">Active</a>
+                <a class="button-navbar" aria-current="page" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="button-navbar" href="#">Forums</a>
+                <a class="button-navbar" href="{{ url('/forums') }}">Forums</a>
             </li>
             <li class="nav-item">
-                <a class="button-navbar" href="#">Guides</a>
+                <a class="button-navbar" href="{{ url('/guides') }}">Guides</a>
             </li>
             <li class="nav-item">
                 <a class="button-navbar">Login</a>
