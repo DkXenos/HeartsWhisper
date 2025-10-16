@@ -17,13 +17,13 @@
             </li>
             @guest
                 <li class="nav-item">
-                    <a class="button-navbar">Login</a>
+                    <a href="{{ route('login') }}" class="button-navbar">Login</a>
                 </li>
             @endguest
 
             @auth
                 <li class="nav-item">
-                    
+
                     <span class="navbar-text">Hi, {{ auth()->user()->username }}</span>
                 </li>
                 <li class="nav-item">

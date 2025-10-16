@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <p>This is a placeholder login page.</p>
-                    {{-- A real form would go here --}}
+                    <h1>Hello World</h1>
                 </div>
             </div>
         </div>
