@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('homepage');
 });
 Route::get('/forums', [Routing::class, 'showForums']);
-Route::get('/forums', [Routing::class, 'showGuides']);
+Route::get('/guides', [Routing::class, 'showGuides']);
 
 
 
