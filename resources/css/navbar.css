@@ -54,16 +54,6 @@
     --button-right-gradient: #94B1EE;
     --button-left-border: #f2b028;
     --button-right-border: #fff0b8;
-    background-image: linear-gradient(
-            90deg,
-            var(--button-left-gradient),
-            var(--button-right-gradient)
-        ),
-        radial-gradient(
-            circle at top left,
-            var(--button-left-border),
-            var(--button-right-border)
-        );
     background-origin: border-box;
     background-clip: padding-box, border-box;
     transition: --button-left-gradient 300ms, --button-right-gradient 300ms;
@@ -83,6 +73,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    margin-bottom: 5rem;
 }
 
 .logobg {
@@ -108,7 +99,7 @@
     z-index: 0;
     top: 0rem;
     right: 0rem;
-    z-index: 2;
+    z-index: 1;
 }
 
 .logoimg {

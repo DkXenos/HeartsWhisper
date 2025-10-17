@@ -2,7 +2,7 @@
     <div class="navbar-container">
         <div class="navbar-brand" href="#">
             <img src="{{ asset('Asset/Components/Navbar/navbarnew3.svg') }}" alt="Hearts Whisper Logo" class="logobg">
-            <img src="{{ asset('Asset/Components/Navbar/ribbonnew.svg') }}" alt="Hearts Whisper Logo" class="ribbon">
+            {{-- <img src="{{ asset('Asset/Components/Navbar/ribbonnew.svg') }}" alt="Hearts Whisper Logo" class="ribbon"> --}}
 
         </div>
         <ul class="nav main-nav-list">

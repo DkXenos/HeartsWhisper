@@ -8,15 +8,20 @@
 
     <section id="hero">
         <div class="hero-root">
+            <img src="{{ asset('Asset/Components/Navbar/ribbonnew.svg') }}" alt="Hearts Whisper Logo" class="ribbon">
             <img src="asset/homepage/pillar-left.svg" alt="" class="pillar-left">
             <img src="asset/homepage/pillar-right.svg" alt="" class="pillar-right">
             <div class="hero-bg">
                 <div class="hero-content-1">
                     <img src="asset/homepage/dear6.svg" alt="dear" class="dearnew">
-                    <img src="asset/homepage/introduction.svg" alt="borderwtext" class="hero1img">
+                    <img src="asset/homepage/textopening.svg" alt="borderwtext" class="hero1img">
                 </div>
                 <div class="hero-content-2">
+                    <img src="asset/homepage/lettercloud.svg" alt="dear" class="lettercloud">
+                </div>
+                <div class="hero-content-3">
                     <img src="asset/homepage/coming-soon.svg" alt="coming soon" class="comingsoon">
+                    <h1>Hello World</h1>
                 </div>
             </div>
         </div>
