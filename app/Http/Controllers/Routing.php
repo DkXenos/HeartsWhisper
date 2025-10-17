@@ -10,6 +10,6 @@ class Routing extends Controller
 		return view('guides');
 	}
 	public function showForums(){
-		return view('forum');
+		return view('forum.index');
 	}
 }

@@ -10,6 +10,7 @@
                 <div class="card-body">
                     <p>This is a placeholder login page.</p>
                     <h1>Hello World</h1>
+                    <p>Dont have an account? <a href="{{ route('register') }}">Register here</a>.</p>
                 </div>
             </div>
         </div>

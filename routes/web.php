@@ -12,5 +12,4 @@ Route::get('/forums', [Routing::class, 'showForums']);
 Route::get('/guides', [Routing::class, 'showGuides']);
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-
-
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');

@@ -9,7 +9,18 @@
 
                 <div class="card-body">
                     <p>This is a placeholder registration page.</p>
-                    {{-- A real form would go here --}}
+                    <h1>Hello World</h1>
+                    <h1>Hello World</h1>
+                    <h1>Hello World</h1>
+                    <h1>Hello World</h1>
+                    <h1>Hello World</h1>
+                    <h1>Hello World</h1>
+                    <h1>Hello World</h1>
+                    <h1>Hello World</h1>
+                    <h1>Hello World</h1>
+                    <h1>Hello World</h1>
+                    <h1>Hello World</h1>
+                    <h1>Hello World</h1>
                 </div>
             </div>
         </div>
