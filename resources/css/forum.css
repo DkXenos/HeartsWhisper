@@ -61,13 +61,20 @@
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px #ffb5d831;
-    transition: box-shadow 0.2s, border-color 0.2s;
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+    position: relative;
 }
 
 .post-card:hover {
     box-shadow: 0 4px 6px #cdf4fe;
     border-color: #ffb5d7;
-    
+    transform: translateY(-2px);
+}
+
+/* Clickable post body area */
+.post-clickable {
+    cursor: pointer;
 }
 
 /* Left vote section */
@@ -351,12 +358,12 @@
 }
 
 .reply-submit-btn {
-    background: linear-gradient(135deg, #ffb5d7, #75abdc);
+    background: linear-gradient(135deg, #ffb5d7, #ffb5d7);
     color: white;
 }
 
 .reply-submit-btn:hover {
-    background: linear-gradient(135deg, #ff9ec9, #5a96d4);
+    background: linear-gradient(135deg, #ff9ec9, #ffb5d7);
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(255, 181, 215, 0.3);
 }
@@ -433,7 +440,7 @@
 }
 
 .pagination-container nav a:hover {
-    background: linear-gradient(135deg, #ffb5d7, #b2d5f1);
+    background: linear-gradient(135deg, #ffb5d7, #ffb5d7);
     color: white;
     border-color: #ffb5d7;
     transform: translateY(-2px);
@@ -669,12 +676,12 @@
 }
 
 .create-btn-submit {
-    background: linear-gradient(135deg, #ffb5d7, #75abdc);
+    background: linear-gradient(135deg, #ffb5d7, #ffb5d7);
     color: white;
 }
 
 .create-btn-submit:hover {
-    background: linear-gradient(135deg, #ff9ec9, #5a96d4);
+    background: linear-gradient(135deg, #ff9ec9, #ffb5d7);
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(255, 181, 215, 0.3);
 }
@@ -771,12 +778,12 @@
 }
 
 .reply-submit-btn {
-    background: linear-gradient(135deg, #ffb5d7, #75abdc);
+    background: linear-gradient(135deg, #ffb5d7, #ffb5d7);
     color: white;
 }
 
 .reply-submit-btn:hover {
-    background: linear-gradient(135deg, #ff9ec9, #5a96d4);
+    background: linear-gradient(135deg, #ff9ec9, #ffb5d7);
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(255, 181, 215, 0.3);
 }

@@ -3,6 +3,12 @@
 @section('title', 'Create Post - Hearts Whisper')
 
 @section('content')
+    <img src="{{ asset('asset/forums/background-forum.svg') }}" alt="Homepage Background"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+
+    <img src="{{ asset('asset/homepage/pillar-left.svg') }}" alt="" class="pillar-left">
+    <img src="{{ asset('asset/homepage/pillar-right.svg') }}" alt="" class="pillar-right">
+
     <div class="create-post-container">
         <div class="create-post-header">
             <h2>Share Your Story</h2>

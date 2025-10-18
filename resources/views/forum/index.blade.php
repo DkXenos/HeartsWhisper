@@ -8,6 +8,9 @@
 
 
     <div class="forum-container">
+        <img src="asset/homepage/pillar-left.svg" alt="" class="pillar-left">
+        <img src="asset/homepage/pillar-right.svg" alt="" class="pillar-right">
+
         <div class="forum-header">
             <div>
                 <h2>Forum Discussions</h2>
@@ -18,52 +21,74 @@
 
         <div class="posts-list">
             @forelse ($posts as $post)
-                <a href="{{ route('forums.show', $post->id) }}" class="post-card-link">
-                    <div class="post-card">
-                        <!-- Vote Section -->
-                        <div class="post-votes">
-                            @if(strtolower($post->user->gender) === 'female')
-                                <img src="{{ asset('asset/forums/girl.svg') }}" alt="Female Avatar" class="user-avatar">
-                            @else
-                                <img src="{{ asset('asset/forums/boi.svg') }}" alt="Male Avatar" class="user-avatar">
-                            @endif
-                            <span class="vote-count">{{ $post->likes_count }}</span>
+                <div class="post-card" data-post-url="{{ route('forums.show', $post->id) }}">
+                    <!-- Vote Section -->
+                    <div class="post-votes">
+                        @if (strtolower($post->user->gender) === 'female')
+                            <img src="{{ asset('asset/forums/girl.svg') }}" alt="Female Avatar" class="user-avatar">
+                        @else
+                            <img src="{{ asset('asset/forums/boi.svg') }}" alt="Male Avatar" class="user-avatar">
+                        @endif
+                        <span class="vote-count">{{ $post->likes_count }}</span>
+                    </div>
+
+                    <!-- Content Section -->
+                    <div class="post-content-container">
+                        <div class="post-meta">
+                            <span>Posted by
+                                <span class="post-author">{{ $post->user->username }}</span>
+                            </span>
+                            <span>&middot;</span>
+                            <span>{{ $post->created_at->diffForHumans() }}</span>
                         </div>
 
-                        <!-- Content Section -->
-                        <div class="post-content-container">
-                            <div class="post-meta">
-                                <span>Posted by
-                                    <span class="post-author">{{ $post->user->username }}</span>
-                                </span>
-                                <span>&middot;</span>
-                                <span>{{ $post->created_at->diffForHumans() }}</span>
-                            </div>
+                        <div class="post-body post-clickable">
+                            <p>{{ Illuminate\Support\Str::limit($post->content, 300) }}</p>
+                        </div>
 
-                            <div class="post-body">
-                                <p>{{ Illuminate\Support\Str::limit($post->content, 300) }}</p>
-                            </div>
+                        <div class="post-categories">
+                            @foreach ($post->categories as $category)
+                                <span class="category-tag">{{ $category->name }}</span>
+                            @endforeach
+                        </div>
 
-                            <div class="post-categories">
-                                @foreach ($post->categories as $category)
-                                    <span class="category-tag">{{ $category->name }}</span>
-                                @endforeach
-                            </div>
+                        <!-- Action Buttons -->
+                        <div class="post-actions">
+                            <button class="action-btn reply-toggle-btn" data-post-id="{{ $post->id }}"
+                                onclick="event.stopPropagation()">
+                                <img src="{{ asset('asset/forums/replybutton.svg') }}" alt="reply" class="reply-icon">
+                                Reply
+                            </button>
+                            <button class="action-btn like-toggle-btn" data-post-id="{{ $post->id }}"
+                                data-liked="false" onclick="event.stopPropagation()">
+                                <img src="{{ asset('asset/forums/unliked.svg') }}" alt="like" class="like-icon">
+                                Like
+                            </button>
+                        </div>
 
-                            <!-- Action Buttons -->
-                            <div class="post-actions">
-                                <div class="action-btn">
-                                    <img src="{{ asset('asset/forums/replybutton.svg') }}" alt="reply" class="reply-icon">
-                                    <span>{{ $post->replies->count() }} Replies</span>
+                        <!-- Reply Section (Hidden by default) -->
+                        <div class="reply-section" id="reply-section-{{ $post->id }}" style="display: none;"
+                            onclick="event.stopPropagation()">
+                            <form class="reply-form" data-post-id="{{ $post->id }}">
+                                @csrf
+                                <textarea class="reply-textarea" placeholder="Write your reply..." rows="3" maxlength="1000" required></textarea>
+                                <div class="reply-actions">
+                                    <span class="reply-char-count">
+                                        <span class="current">0</span> / 1000
+                                    </span>
+                                    <div class="reply-buttons">
+                                        <button type="button" class="reply-cancel-btn" data-post-id="{{ $post->id }}">
+                                            Cancel
+                                        </button>
+                                        <button type="submit" class="reply-submit-btn">
+                                            Post Reply
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="action-btn">
-                                    <img src="{{ asset('asset/forums/unliked.svg') }}" alt="like" class="like-icon">
-                                    <span>{{ $post->likes_count }} Likes</span>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
-                </a>
+                </div>
             @empty
                 <div class="empty-state">
                     <p>No posts yet. Be the first to share your story!</p>

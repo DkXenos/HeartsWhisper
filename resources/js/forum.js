@@ -1,6 +1,25 @@
 // Forum Reply Functionality
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Make post cards clickable (but not the buttons inside)
+    const postCards = document.querySelectorAll('.post-card');
+    
+    postCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Don't navigate if clicking on buttons or interactive elements
+            if (e.target.closest('.action-btn') || 
+                e.target.closest('.reply-section') || 
+                e.target.closest('.category-tag')) {
+                return;
+            }
+            
+            const url = this.dataset.postUrl;
+            if (url) {
+                window.location.href = url;
+            }
+        });
+    });
+    
     // Toggle reply section when Reply button is clicked
     const replyToggleBtns = document.querySelectorAll('.reply-toggle-btn');
     
