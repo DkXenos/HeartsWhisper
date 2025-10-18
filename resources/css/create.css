@@ -1,0 +1,204 @@
+/* ============================================
+   CREATE POST PAGE STYLES
+   ============================================ */
+
+.create-post-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.create-post-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.create-post-header h2 {
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+    font-size: 1.875rem;
+}
+
+.create-post-muted {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.create-post-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.create-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.create-form-label {
+    display: block;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.create-form-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    resize: vertical;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.create-form-textarea:focus {
+    outline: none;
+    border-color: #ffb5d7;
+}
+
+.create-character-count {
+    text-align: right;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-top: 0.5rem;
+}
+
+.create-current-count {
+    font-weight: 600;
+    color: #374151;
+}
+
+.create-max-count {
+    color: #9ca3af;
+}
+
+.create-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+}
+
+.create-category-checkbox {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+}
+
+.create-category-checkbox:hover {
+    border-color: #ffb5d7;
+    background-color: #fef2f6;
+}
+
+.create-category-checkbox input[type="checkbox"] {
+    margin-right: 0.5rem;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    accent-color: #ffb5d7;
+}
+
+.create-category-checkbox
+    input[type="checkbox"]:checked
+    ~ .create-category-label {
+    color: #ffb5d7;
+    font-weight: 600;
+}
+
+.create-category-label {
+    font-size: 0.875rem;
+    color: #374151;
+    user-select: none;
+}
+
+.create-anonymous-label {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.create-anonymous-checkbox {
+    margin-right: 0.5rem;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    accent-color: #ffb5d7;
+}
+
+.create-form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.create-btn-cancel,
+.create-btn-submit {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    border: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.create-btn-cancel {
+    background: white;
+    color: #6b7280;
+    border: 2px solid #e5e7eb;
+}
+
+.create-btn-cancel:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+    color: #374151;
+}
+
+.create-btn-submit {
+    background: linear-gradient(135deg, #ffb5d7, #ffb5d7);
+    color: white;
+}
+
+.create-btn-submit:hover {
+    background: linear-gradient(135deg, #ff9ec9, #ffb5d7);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(255, 181, 215, 0.3);
+}
+
+/* Responsive Create Post */
+@media (max-width: 768px) {
+    .create-post-form {
+        padding: 1.5rem;
+    }
+
+    .create-categories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .create-form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .create-btn-cancel,
+    .create-btn-submit {
+        width: 100%;
+    }
+}
