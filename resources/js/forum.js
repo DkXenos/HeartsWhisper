@@ -215,5 +215,158 @@ document.addEventListener('DOMContentLoaded', function() {
             // });
         });
     });
+    
+    // ===== NESTED REPLIES FUNCTIONALITY =====
+    
+    // Toggle nested reply form
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.nested-reply-toggle')) {
+            const btn = e.target.closest('.nested-reply-toggle');
+            const replyId = btn.dataset.replyId;
+            const nestedForm = document.getElementById(`nested-reply-${replyId}`);
+            
+            // Hide all other nested forms
+            document.querySelectorAll('.nested-reply-form').forEach(form => {
+                if (form.id !== `nested-reply-${replyId}`) {
+                    form.style.display = 'none';
+                }
+            });
+            
+            // Toggle this form
+            if (nestedForm.style.display === 'none') {
+                nestedForm.style.display = 'block';
+                nestedForm.querySelector('.reply-textarea-small').focus();
+            } else {
+                nestedForm.style.display = 'none';
+            }
+        }
+        
+        // Cancel nested reply
+        if (e.target.closest('.cancel-nested-reply')) {
+            const btn = e.target.closest('.cancel-nested-reply');
+            const replyId = btn.dataset.replyId;
+            const nestedForm = document.getElementById(`nested-reply-${replyId}`);
+            nestedForm.style.display = 'none';
+            nestedForm.querySelector('.reply-textarea-small').value = '';
+        }
+        
+        // Like reply button
+        if (e.target.closest('.like-reply-btn')) {
+            const btn = e.target.closest('.like-reply-btn');
+            const replyId = btn.dataset.replyId;
+            const isLiked = btn.dataset.liked === 'true';
+            const likeIcon = btn.querySelector('.like-icon-small');
+            
+            if (isLiked) {
+                likeIcon.src = '/asset/forums/unliked.svg';
+                btn.dataset.liked = 'false';
+                btn.classList.remove('liked');
+            } else {
+                likeIcon.src = '/asset/forums/liked.svg';
+                btn.dataset.liked = 'true';
+                btn.classList.add('liked');
+            }
+            
+            console.log('Reply', replyId, isLiked ? 'unliked' : 'liked');
+            
+            // TODO: Send AJAX request to update reply like status
+        }
+    });
+    
+    // Handle nested reply form submission
+    const nestedReplyForms = document.querySelectorAll('.nested-reply-form-inner');
+    
+    nestedReplyForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const textarea = this.querySelector('.reply-textarea-small');
+            const parentId = this.dataset.parentId;
+            const postId = this.dataset.postId;
+            const submitBtn = this.querySelector('.submit-nested-reply');
+            
+            if (!textarea.value.trim()) {
+                alert('Please write a reply before submitting.');
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Posting...';
+            
+            console.log('Nested reply submitted:');
+            console.log('Post ID:', postId);
+            console.log('Parent Reply ID:', parentId);
+            console.log('Content:', textarea.value);
+            
+            // TODO: Implement AJAX request to save nested reply
+            
+            setTimeout(() => {
+                alert('Nested reply will be saved!\n\nReply: ' + textarea.value);
+                textarea.value = '';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Reply';
+                document.getElementById(`nested-reply-${parentId}`).style.display = 'none';
+            }, 500);
+        });
+    });
+    
+    // Character count for main reply form on detail page
+    const mainReplyTextarea = document.querySelector('.main-reply-form .reply-textarea');
+    if (mainReplyTextarea) {
+        mainReplyTextarea.addEventListener('input', function() {
+            const charCount = this.closest('.main-reply-form').querySelector('.reply-char-count .current');
+            const currentLength = this.value.length;
+            
+            if (charCount) {
+                charCount.textContent = currentLength;
+                
+                if (currentLength > 900) {
+                    charCount.style.color = '#ef4444';
+                } else if (currentLength > 800) {
+                    charCount.style.color = '#f59e0b';
+                } else {
+                    charCount.style.color = '#374151';
+                }
+            }
+        });
+    }
+    
+    // Handle main reply form submission on detail page
+    const mainReplyForm = document.querySelector('.main-reply-form');
+    if (mainReplyForm) {
+        mainReplyForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const textarea = this.querySelector('.reply-textarea');
+            const postId = this.dataset.postId;
+            const submitBtn = this.querySelector('.reply-submit-btn');
+            
+            if (!textarea.value.trim()) {
+                alert('Please write a reply before submitting.');
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Posting...';
+            
+            console.log('Main reply submitted for post:', postId);
+            console.log('Content:', textarea.value);
+            
+            // TODO: Implement AJAX request
+            
+            setTimeout(() => {
+                alert('Reply will be saved!\n\nReply: ' + textarea.value);
+                textarea.value = '';
+                const charCount = this.querySelector('.reply-char-count .current');
+                if (charCount) {
+                    charCount.textContent = '0';
+                    charCount.style.color = '#374151';
+                }
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Post Reply';
+            }, 500);
+        });
+    }
 });
+
 

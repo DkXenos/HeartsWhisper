@@ -24,4 +24,12 @@ class Routing extends Controller
 
         return view('forum.create', ['categories' => $categories]);
     }
+
+    public function showPost(Post $post)
+    {
+        // Load the post with all its relationships
+        $post->load(['user', 'categories', 'replies.user', 'replies.replies.user']);
+
+        return view('forum.show', ['post' => $post]);
+    }
 }
