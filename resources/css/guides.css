@@ -31,9 +31,9 @@
    ============================================ */
 
 .guide-slideshow {
-    background: linear-gradient(135deg, rgba(255, 181, 215, 0.1), rgba(181, 213, 241, 0.1));
+    background: #FFFDF5;
     backdrop-filter: blur(10px);
-    border: 3px solid rgba(255, 181, 215, 0.3);
+    border: 3px solid #5e4124;
     border-radius: 20px;
     padding: 3rem;
     box-shadow: 0 8px 32px rgba(255, 181, 215, 0.2);
@@ -54,6 +54,7 @@
 .slide-image-container {
     flex: 1;
     max-width: 500px;
+    border: 3px dashed #5e412449;
 }
 
 .slide-image {
@@ -71,7 +72,7 @@
 
 .slide-category {
     display: inline-block;
-    background: linear-gradient(135deg, #ffb5d7, #75abdc);
+    background: linear-gradient(135deg, #ffb5d7, #ff9ec9);
     color: white;
     padding: 0.5rem 1.5rem;
     border-radius: 50px;
@@ -100,7 +101,7 @@
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 2.5rem;
-    background: linear-gradient(135deg, #ffb5d7, #75abdc);
+    background: linear-gradient(135deg, #ffb5d7, #ff9ec9);
     color: white;
     font-family: "Comfortaa", sans-serif;
     font-size: 1.1rem;
@@ -114,7 +115,7 @@
 .video-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(255, 181, 215, 0.5);
-    background: linear-gradient(135deg, #ff9ec9, #5a96d4);
+    background: linear-gradient(135deg, #ff9ec9, #ffb5d7);
 }
 
 .video-button svg {
