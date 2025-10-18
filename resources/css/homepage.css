@@ -1,10 +1,121 @@
-/* .thwintroduction {
-    font-family: Comfortaa-Bold;
-    font-size: 1.2rem;
-    padding: 2rem;
-    line-height: 1.6;
-    color: #FFB5D7;
-} */
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatSlow {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ============================================
+   HERO SECTION BASE STYLES
+   ============================================ */
+
+#hero {
+    position: relative;
+    /* min-height: 100vh; */
+}
+
+.hero-root {
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   HERO TEXT BOX STYLES
+   ============================================ */
+
+.hero-text-box {
+    background: #FFFDF5;
+    backdrop-filter: blur(10px);
+    border: 6px double #AADBFE;
+    border-radius: 20px;
+    padding: 3rem;
+    margin-top: 4rem;
+    max-width: 50rem;
+    animation: fadeInUp 1s ease-out 1s both;
+}
+
+.hero-description {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #5E4124;
+    text-align: center;
+    margin: 0;
+}
+
+.whisper-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: linear-gradient(135deg, #ffb5d7, #ffb5d7);
+    color: white;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(255, 181, 215, 0.3);
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease-out 2s both;
+}
+
+.whisper-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255, 181, 215, 0.5);
+    background: linear-gradient(135deg, #ff9ec9, #ff9ec9);
+}
+
+/* Apply animations to existing elements */
+.dearnew {
+    animation: floatSlow 3s ease-in-out infinite;
+}
+
+.hero1img {
+    animation: scaleIn 0.8s ease-out, floatSlow 3.5s ease-in-out 0.8s infinite;
+}
+
+.lettercloud {
+    animation: floatSlow 4s ease-in-out infinite;
+}
+
+.comingsoon {
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+.ribbon{
+    position: absolute;
+    top: 0;
+}
+
+/* ============================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================ */
 
 @media (max-width: 3840px) and (max-height: 2160px) {
 }
@@ -30,6 +141,7 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+        height: auto;
         /* height: 70rem; */
     }
     .hero-bg {
@@ -39,7 +151,7 @@
         display: flex;
         justify-content: start;
         align-items: center;
-        height: 75rem;
+        /* height: 75rem; */
         margin-top: 0rem;
         flex-direction: column;
     }
@@ -90,11 +202,14 @@
         align-items: center;
         margin-top: 0rem;
         flex-direction: column;
-
     }
 
-    .comingsoon {
+    .hero-text-box {
+        margin-top: 2rem;
+    }
 
+    .whisper-btn {
+        margin-top: 2rem;
     }
     .pillar-left {
         height: auto;
@@ -122,8 +237,27 @@
 @media (max-width: 1180px) and (max-height: 820px) {
 }
 @media (max-width: 1024px) and (max-height: 1366px) and (orientation: portrait) {
+    
+    
+    .hero-text-box {
+        padding: 2rem;
+        margin: 2.5rem 1.5rem;
+        max-width: 600px;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
 }
 @media (max-width: 1024px) and (max-height: 768px) and (orientation: landscape) {
+    .hero-text-box {
+        padding: 1.5rem 2rem;
+        margin: 1.5rem 2rem;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+    }
 }
 @media (max-width: 1024px) and (max-height: 600px) {
 }
@@ -158,6 +292,7 @@
 @media (max-width: 393px) and (max-height: 873px) and (orientation: portrait) {
 }
 @media (max-width: 390px) and (max-height: 844px) and (orientation: portrait) {
+    
     .pillar-left {
         left: -6rem;
         width: 40%;
@@ -165,6 +300,23 @@
     .pillar-right {
         right: -5rem;
         width: 40%;
+    }
+    
+    .hero-text-box {
+        padding: 1.5rem;
+        margin: 2rem 1rem;
+        border-width: 2px;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .whisper-btn {
+        padding: 0.875rem 2.5rem;
+        font-size: 1rem;
+        margin-top: 1.5rem;
     }
 }
 @media (max-width: 375px) and (max-height: 667px) and (orientation: portrait) {

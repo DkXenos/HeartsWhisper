@@ -360,6 +360,9 @@
     .hamburger-menu.active .hamburger-line:nth-child(3) {
         transform: rotate(-45deg) translate(8px, -8px);
     }
+    .mobile-logobg {
+        display: none;
+    }
 }
 @media (max-width: 1366px) and (max-height: 1024px) {
 }
@@ -485,6 +488,7 @@
         width: 80%;
         top: -1rem;
     }
+    
 }
 @media (max-width: 459px) and (max-height: 841px) and (orientation: portrait) {
 }

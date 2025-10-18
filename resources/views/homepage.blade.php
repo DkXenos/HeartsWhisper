@@ -5,10 +5,9 @@
 @section('content')
     <img src="{{ asset('asset/homepage/mainbg.svg') }}" alt="Homepage Background"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
-
+            <img src="{{ asset(path: 'Asset/Components/Navbar/ribbonnew.svg') }}" alt="Hearts Whisper Logo" class="ribbon">
     <section id="hero">
         <div class="hero-root">
-            <img src="{{ asset('Asset/Components/Navbar/ribbonnew.svg') }}" alt="Hearts Whisper Logo" class="ribbon">
             <img src="asset/homepage/pillar-left.svg" alt="" class="pillar-left">
             <img src="asset/homepage/pillar-right.svg" alt="" class="pillar-right">
             <div class="hero-bg">
@@ -21,6 +20,15 @@
                 </div>
                 <div class="hero-content-3">
                     <img src="asset/homepage/coming-soon.svg" alt="coming soon" class="comingsoon">
+                    
+                    <div class="hero-text-box">
+                        <p class="hero-description">
+                            Here we'll also learn about red flags, boundaries, self-worth, healthy communication styles, 
+                            and everything you need to know to maintain a healthy relationship & communication style.
+                        </p>
+                    </div>
+                    
+                    <a href="{{ url('/guides') }}" class="whisper-btn">Whisper us</a>
                 </div>
             </div>
         </div>
