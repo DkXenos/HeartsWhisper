@@ -13,7 +13,9 @@
     border-bottom: 2px solid #e5e7eb;
     font-family: "Pearl";
 }
+.forum-header h2 {
 
+}
 .forum-header p {
     font-family: "Comfortaa";
 }
@@ -54,8 +56,8 @@
 
 .post-card {
     display: flex;
-    background-color: #fff;
-    border: 5px solid transparent;
+    background-color: #FFFDF5;
+    border: 5px dashed transparent;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px #ffb5d831;
@@ -65,6 +67,7 @@
 .post-card:hover {
     box-shadow: 0 4px 6px #cdf4fe;
     border-color: #ffb5d7;
+    
 }
 
 /* Left vote section */
@@ -72,10 +75,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 0.75rem 0.5rem;
     background-color: #f9fafb;
     border-right: 1px solid #e5e7eb;
-    min-width: 48px;
+    min-width: 80px;
+    gap: 0.5rem;    
+    font-family: "Comfortaa";
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
 }
 
 .vote-btn {
@@ -114,6 +130,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    font-family: "Comfortaa";
 }
 
 .post-meta {
@@ -352,98 +369,114 @@
 
 /* Pagination */
 .pagination-container {
-    margin: 3rem 0 2rem;
+    margin: 3rem auto 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    font-family: 'Comfortaa', sans-serif;
 }
 
 .pagination-info {
     color: #6b7280;
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     font-weight: 500;
+    text-align: center;
+    font-family: 'Comfortaa', sans-serif;
 }
 
-/* Laravel pagination wrapper */
+/* Laravel/Tailwind pagination wrapper */
 .pagination-container nav {
-    width: 100%;
     display: flex;
     justify-content: center;
-}
-
-/* Pagination list */
-.pagination-container .pagination {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    gap: 0.5rem;
     align-items: center;
 }
 
-/* Individual page items */
-.pagination li {
-    display: inline-flex;
+/* Tailwind flex wrapper */
+.pagination-container nav > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
 }
 
-/* Pagination links and spans */
-.pagination a,
-.pagination span {
+/* Hide text labels in mobile/desktop views */
+.pagination-container nav > div > div {
+    display: none;
+}
+
+/* Style all pagination links and spans */
+.pagination-container nav span,
+.pagination-container nav a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
-    height: 40px;
-    padding: 0 0.75rem;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    font-weight: 500;
+    min-width: 42px;
+    min-height: 42px;
+    padding: 0.6rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
     text-decoration: none;
-    transition: all 0.2s ease;
-}
-
-/* Regular page links */
-.pagination a {
+    transition: all 0.3s ease;
+    border: 2px solid #e5e7eb;
     background-color: #fff;
     color: #374151;
-    border: 1px solid #e5e7eb;
+    font-family: 'Comfortaa', sans-serif;
 }
 
-.pagination a:hover {
+/* Links (clickable pages) */
+.pagination-container nav a {
+    cursor: pointer;
+}
+
+.pagination-container nav a:hover {
     background: linear-gradient(135deg, #ffb5d7, #b2d5f1);
     color: white;
-    border-color: transparent;
+    border-color: #ffb5d7;
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(255, 181, 215, 0.3);
 }
 
-/* Active page */
-.pagination .active span {
+/* Active/Current page - Tailwind uses aria-current="page" */
+.pagination-container nav span[aria-current="page"] {
     background: linear-gradient(135deg, #ffb5d7, #75abdc);
     color: white;
-    border: none;
-    box-shadow: 0 4px 6px rgba(255, 181, 215, 0.3);
-    font-weight: 600;
+    border: 2px solid #ffb5d7;
+    box-shadow: 0 4px 8px rgba(255, 181, 215, 0.4);
+    font-weight: 700;
+    transform: scale(1.05);
 }
 
-/* Disabled state (dots, disabled prev/next) */
-.pagination .disabled span {
+/* Disabled state (prev/next when at edges) - Tailwind uses aria-disabled */
+.pagination-container nav span[aria-disabled="true"] {
     background-color: #f9fafb;
-    color: #9ca3af;
-    border: 1px solid #e5e7eb;
+    color: #d1d5db;
+    border: 2px solid #e5e7eb;
     cursor: not-allowed;
+    opacity: 0.5;
 }
 
-/* Previous/Next buttons */
-.pagination li:first-child a,
-.pagination li:last-child a {
-    font-weight: 600;
-    padding: 0 1rem;
+/* Ellipsis (...) */
+.pagination-container nav span[aria-disabled="true"]:not([rel]) {
+    background-color: transparent;
+    border: none;
+    cursor: default;
+    opacity: 0.6;
 }
 
-.pagination li:first-child a:hover,
-.pagination li:last-child a:hover {
+/* Previous/Next buttons - Tailwind uses rel attribute */
+.pagination-container nav a[rel="prev"],
+.pagination-container nav a[rel="next"] {
+    font-weight: 700;
+    padding: 0.6rem 1.2rem;
+    min-width: 1rem;
+}
+
+.pagination-container nav a[rel="prev"]:hover,
+.pagination-container nav a[rel="next"]:hover {
     background: linear-gradient(135deg, #75abdc, #ffb5d7);
 }
 
@@ -789,5 +822,31 @@
     .reply-cancel-btn,
     .reply-submit-btn {
         flex: 1;
+    }
+    
+    /* Pagination Mobile Styles */
+    .pagination-container {
+        padding: 0 1rem;
+    }
+    
+    .pagination-container nav > div {
+        gap: 0.5rem;
+    }
+    
+    .pagination-container nav span,
+    .pagination-container nav a {
+        min-width: 38px;
+        min-height: 38px;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.85rem;
+    }
+    
+    .pagination-container nav a[rel="prev"],
+    .pagination-container nav a[rel="next"] {
+        padding: 0.5rem 0.8rem;
+    }
+    
+    .pagination-info {
+        font-size: 0.8rem;
     }
 }

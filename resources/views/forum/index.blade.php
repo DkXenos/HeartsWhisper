@@ -21,13 +21,12 @@
                 <div class="post-card">
                     <!-- Vote Section -->
                     <div class="post-votes">
-                        <button class="vote-btn upvote" aria-label="Upvote">
-                            <p>upvote icon</p>
-                        </button>
+                        @if(strtolower($post->user->gender) === 'female')
+                            <img src="{{ asset('asset/forums/girl.svg') }}" alt="Female Avatar" class="user-avatar">
+                        @else
+                            <img src="{{ asset('asset/forums/boi.svg') }}" alt="Male Avatar" class="user-avatar">
+                        @endif
                         <span class="vote-count">{{ $post->likes_count }}</span>
-                        <button class="vote-btn downvote" aria-label="Downvote">
-                            <p>downvote icon</p>
-                        </button>
                     </div>
 
                     <!-- Content Section -->
