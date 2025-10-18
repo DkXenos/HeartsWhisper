@@ -162,4 +162,58 @@ document.addEventListener('DOMContentLoaded', function() {
             // });
         }
     });
+
+    // Like button toggle functionality
+    const likeToggleBtns = document.querySelectorAll('.like-toggle-btn');
+    
+    likeToggleBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const postId = this.dataset.postId;
+            const isLiked = this.dataset.liked === 'true';
+            const likeIcon = this.querySelector('.like-icon');
+            const likeText = this.childNodes[2]; // The text node "Like"
+            
+            if (isLiked) {
+                // Unlike the post
+                likeIcon.src = '/asset/forums/unliked.svg';
+                likeIcon.alt = 'like';
+                this.dataset.liked = 'false';
+                this.classList.remove('liked');
+                if (likeText && likeText.nodeType === Node.TEXT_NODE) {
+                    likeText.textContent = ' Like';
+                }
+            } else {
+                // Like the post
+                likeIcon.src = '/asset/forums/liked.svg';
+                likeIcon.alt = 'liked';
+                this.dataset.liked = 'true';
+                this.classList.add('liked');
+                if (likeText && likeText.nodeType === Node.TEXT_NODE) {
+                    likeText.textContent = ' Liked';
+                }
+            }
+            
+            console.log('Post', postId, isLiked ? 'unliked' : 'liked');
+            
+            // TODO: Send AJAX request to update like status in database
+            // fetch('/api/posts/' + postId + '/like', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            //     },
+            //     body: JSON.stringify({
+            //         liked: !isLiked
+            //     })
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     console.log('Like status updated:', data);
+            // })
+            // .catch(error => {
+            //     console.error('Error:', error);
+            // });
+        });
+    });
 });
+

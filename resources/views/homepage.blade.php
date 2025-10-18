@@ -21,7 +21,6 @@
                 </div>
                 <div class="hero-content-3">
                     <img src="asset/homepage/coming-soon.svg" alt="coming soon" class="comingsoon">
-                    <h1>Hello World</h1>
                 </div>
             </div>
         </div>

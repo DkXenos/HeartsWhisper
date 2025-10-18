@@ -1,14 +1,32 @@
 @font-face {
-    font-family: 'Comfortaa';
-    src: url('/fonts/Comfortaa-Regular.ttf') format('ttf');
+    font-family: "Comfortaa";
+    src: url("../../public/fonts/Comfortaa-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
-    font-display: swap; /* Improves performance */
+    font-display: swap;
 }
+
 @font-face {
-    font-family: 'Comfortaa-Bold';
-    src: url('/fonts/Comfortaa-Bold.ttf') format('ttf');
+    font-family: "Comfortaa";
+    src: url("../../public/fonts/Comfortaa-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Pearl";
+    src: url("../../public/fonts/tan-pearl.ttf") format("truetype"),
+         url("../../public/fonts/tan-pearl.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
-    font-display: swap; /* Improves performance */
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Edward";
+    src: url("../../public/fonts/edward.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }

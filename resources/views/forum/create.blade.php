@@ -11,17 +11,11 @@
 
         <form class="create-post-form">
             @csrf
-            
+
             <div class="create-form-group">
                 <label for="content" class="create-form-label">What's on your mind?</label>
-                <textarea 
-                    id="content" 
-                    name="content" 
-                    class="create-form-textarea" 
-                    rows="8" 
-                    placeholder="Share your thoughts, feelings, or experiences..."
-                    required
-                ></textarea>
+                <textarea id="content" name="content" class="create-form-textarea" rows="8"
+                    placeholder="Share your thoughts, feelings, or experiences..." required></textarea>
                 <div class="create-character-count">
                     <span class="create-current-count">0</span> / <span class="create-max-count">5000</span> characters
                 </div>
@@ -30,13 +24,9 @@
             <div class="create-form-group">
                 <label class="create-form-label">Categories</label>
                 <div class="create-categories-grid">
-                    @foreach($categories as $category)
+                    @foreach ($categories as $category)
                         <label class="create-category-checkbox">
-                            <input 
-                                type="checkbox" 
-                                name="categories[]" 
-                                value="{{ $category->id }}"
-                            >
+                            <input type="checkbox" name="categories[]" value="{{ $category->id }}">
                             <span class="create-category-label">{{ $category->name }}</span>
                         </label>
                     @endforeach

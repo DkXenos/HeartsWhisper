@@ -11,6 +11,14 @@
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 2px solid #e5e7eb;
+    font-family: "Pearl";
+}
+
+.forum-header p {
+    font-family: "Comfortaa";
+}
+.forum-header a {
+    font-family: "Comfortaa";
 }
 
 .forum-header h2 {
@@ -33,6 +41,11 @@
     background: linear-gradient(90deg, #75abdc, #b2d5f1);
 }
 
+.like-button {
+    width: 1rem;
+    height: auto;
+}
+
 .posts-list {
     display: flex;
     flex-direction: column;
@@ -42,16 +55,16 @@
 .post-card {
     display: flex;
     background-color: #fff;
-    border: 1px solid #e5e7eb;
+    border: 5px solid transparent;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px #ffb5d831;
     transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 .post-card:hover {
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border-color: #d1d5db;
+    box-shadow: 0 4px 6px #cdf4fe;
+    border-color: #ffb5d7;
 }
 
 /* Left vote section */
@@ -207,8 +220,26 @@
 }
 
 .action-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 1rem;
+    height: auto;
+}
+
+.like-icon {
+    width: 1rem;
+    height: auto;
+    transition: transform 0.2s;
+}
+.reply-icon {
+    width: 1rem;
+    height: auto;
+}
+
+.action-btn.liked .like-icon {
+    transform: scale(1.1);
+}
+
+.action-btn:active .like-icon {
+    transform: scale(0.9);
 }
 
 /* Reply Section */
@@ -416,59 +447,6 @@
     background: linear-gradient(135deg, #75abdc, #ffb5d7);
 }
 
-/* Responsive pagination */
-@media (max-width: 768px) {
-    .post-votes {
-        min-width: 40px;
-        padding: 0.5rem 0.25rem;
-    }
-    
-    .post-content-container {
-        padding: 0.75rem;
-    }
-    
-    .post-title {
-        font-size: 1rem;
-    }
-    
-    .post-actions {
-        flex-wrap: wrap;
-    }
-    
-    .pagination {
-        gap: 0.25rem;
-    }
-    
-    .pagination a,
-    .pagination span {
-        min-width: 36px;
-        height: 36px;
-        padding: 0 0.5rem;
-        font-size: 0.8125rem;
-    }
-    
-    /* Hide page numbers on mobile, keep prev/next and current */
-    .pagination li:not(:first-child):not(:last-child):not(.active):not(.disabled) {
-        display: none;
-    }
-    
-    /* Reply Section Responsive */
-    .reply-actions {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.5rem;
-    }
-    
-    .reply-buttons {
-        width: 100%;
-    }
-    
-    .reply-cancel-btn,
-    .reply-submit-btn {
-        flex: 1;
-    }
-}
-
 /* Empty state */
 .empty-state {
     text-align: center;
@@ -594,7 +572,9 @@
     accent-color: #ffb5d7;
 }
 
-.create-category-checkbox input[type="checkbox"]:checked ~ .create-category-label {
+.create-category-checkbox
+    input[type="checkbox"]:checked
+    ~ .create-category-label {
     color: #ffb5d7;
     font-weight: 600;
 }
@@ -779,15 +759,15 @@
     .create-post-form {
         padding: 1.5rem;
     }
-    
+
     .create-categories-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .create-form-actions {
         flex-direction: column-reverse;
     }
-    
+
     .create-btn-cancel,
     .create-btn-submit {
         width: 100%;
@@ -801,11 +781,11 @@
         align-items: stretch;
         gap: 0.5rem;
     }
-    
+
     .reply-buttons {
         width: 100%;
     }
-    
+
     .reply-cancel-btn,
     .reply-submit-btn {
         flex: 1;

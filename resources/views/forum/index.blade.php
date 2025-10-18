@@ -3,6 +3,10 @@
 @section('title', 'Forum - Hearts Whisper')
 
 @section('content')
+    <img src="{{ asset('asset/forums/background-forum.svg') }}" alt="Homepage Background"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+
+
     <div class="forum-container">
         <div class="forum-header">
             <div>
@@ -18,22 +22,18 @@
                     <!-- Vote Section -->
                     <div class="post-votes">
                         <button class="vote-btn upvote" aria-label="Upvote">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-                            </svg>
+                            <p>upvote icon</p>
                         </button>
                         <span class="vote-count">{{ $post->likes_count }}</span>
                         <button class="vote-btn downvote" aria-label="Downvote">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
+                            <p>downvote icon</p>
                         </button>
                     </div>
 
                     <!-- Content Section -->
                     <div class="post-content-container">
                         <div class="post-meta">
-                            <span>Posted by 
+                            <span>Posted by
                                 <a href="#" class="post-author">{{ $post->user->username }}</a>
                             </span>
                             <span>&middot;</span>
@@ -53,15 +53,12 @@
                         <!-- Action Buttons -->
                         <div class="post-actions">
                             <button class="action-btn reply-toggle-btn" data-post-id="{{ $post->id }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                </svg>
+                                <img src="{{ asset('asset/forums/replybutton.svg') }}" alt="like" class="reply-icon">
                                 Reply
                             </button>
-                            <button class="action-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                </svg>
+                            <button class="action-btn like-toggle-btn" data-post-id="{{ $post->id }}"
+                                data-liked="false">
+                                <img src="{{ asset('asset/forums/unliked.svg') }}" alt="like" class="like-icon">
                                 Like
                             </button>
                         </div>
@@ -70,13 +67,7 @@
                         <div class="reply-section" id="reply-section-{{ $post->id }}" style="display: none;">
                             <form class="reply-form" data-post-id="{{ $post->id }}">
                                 @csrf
-                                <textarea 
-                                    class="reply-textarea" 
-                                    placeholder="Write your reply..."
-                                    rows="3"
-                                    maxlength="1000"
-                                    required
-                                ></textarea>
+                                <textarea class="reply-textarea" placeholder="Write your reply..." rows="3" maxlength="1000" required></textarea>
                                 <div class="reply-actions">
                                     <span class="reply-char-count">
                                         <span class="current">0</span> / 1000
@@ -101,7 +92,7 @@
             @endforelse
         </div>
 
-        @if($posts->hasPages())
+        @if ($posts->hasPages())
             <div class="pagination-container">
                 <div class="pagination-info">
                     Showing {{ $posts->firstItem() }} to {{ $posts->lastItem() }} of {{ $posts->total() }} results
