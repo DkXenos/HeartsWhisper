@@ -12,7 +12,7 @@
     <div class="create-post-container">
         <div class="create-post-header">
             <h2>Share Your Story</h2>
-            <p class="create-post-muted">Express yourself and connect with the community</p>
+            <p class="create-post-muted">Whisper us your recent story!</p>
         </div>
 
         <form class="create-post-form">
@@ -37,13 +37,6 @@
                         </label>
                     @endforeach
                 </div>
-            </div>
-
-            <div class="create-form-group">
-                <label class="create-form-label create-anonymous-label">
-                    <input type="checkbox" name="anonymous" value="1" class="create-anonymous-checkbox">
-                    Post anonymously
-                </label>
             </div>
 
             <div class="create-form-actions">

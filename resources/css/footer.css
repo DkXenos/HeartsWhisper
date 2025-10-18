@@ -3,10 +3,11 @@
 }
 .site-footer img {
     position: relative;
+    bottom: 0;
+    z-index: 2;
 }
 .site-footer img {
     width: 100%;
 }
 .site-footer-root p {
 }
-

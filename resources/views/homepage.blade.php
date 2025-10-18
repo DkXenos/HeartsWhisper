@@ -14,10 +14,10 @@
             <div class="hero-bg">
                 <div class="hero-content-1">
                     <img src="asset/homepage/dear6.svg" alt="dear" class="dearnew">
-                    <img src="asset/homepage/textopening.svg" alt="borderwtext" class="hero1img">
+                    <img src="asset/homepage/textopening2.svg" alt="borderwtext" class="hero1img">
                 </div>
                 <div class="hero-content-2">
-                    <img src="asset/homepage/lettercloud.svg" alt="dear" class="lettercloud">
+                    <img src="asset/homepage/lettercloud2.svg" alt="dear" class="lettercloud">
                 </div>
                 <div class="hero-content-3">
                     <img src="asset/homepage/coming-soon.svg" alt="coming soon" class="comingsoon">

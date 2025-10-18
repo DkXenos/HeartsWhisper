@@ -16,8 +16,7 @@
 
 @font-face {
     font-family: "Pearl";
-    src: url("../../public/fonts/tan-pearl.ttf") format("truetype"),
-         url("../../public/fonts/tan-pearl.otf") format("opentype");
+    src: url("../../public/fonts/tan-pearl.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;

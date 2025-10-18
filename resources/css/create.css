@@ -14,11 +14,15 @@
 }
 
 .create-post-header h2 {
-    color: #1f2937;
+    color: #5E4124;
     margin-bottom: 0.5rem;
-    font-size: 1.875rem;
+    font-size: 3rem;
+    font-family: "Pearl";
 }
-
+.create-post-header p {
+    color: #5E4124;
+    font-family: "Comfortaa";
+}
 .create-post-muted {
     color: #6b7280;
     font-size: 0.875rem;
@@ -35,6 +39,7 @@
 
 .create-form-group {
     margin-bottom: 1.5rem;
+    font-family: "Comfortaa";
 }
 
 .create-form-label {
@@ -56,6 +61,7 @@
     resize: vertical;
     transition: border-color 0.2s;
     box-sizing: border-box;
+    font-family: "Comfortaa";
 }
 
 .create-form-textarea:focus {
@@ -144,6 +150,7 @@
     margin-top: 2rem;
     padding-top: 1.5rem;
     border-top: 1px solid #e5e7eb;
+    font-family: "Comfortaa";
 }
 
 .create-btn-cancel,
