@@ -1880,7 +1880,7 @@ input[type="radio"]:checked + .gender-option[data-gender="boi"] {
     }
 }
 
-/* DEFAULT LAYOUT SIZE - 1512x982 */
+/* DEFAULT LAYOUT SIZE - 1512x982  */
 @media (max-width: 1512px) and (max-height: 982px) {
     .auth-container {
         margin: 4rem auto;
