@@ -1,6 +1,6 @@
 <div class="reply-item" style="margin-left: {{ $level * 2 }}rem;">
     <div class="reply-header">
-        @if(strtolower($reply->user->gender) === 'female')
+        @if (strtolower($reply->user->gender) === 'female')
             <img src="{{ asset('asset/forums/girl.svg') }}" alt="Female Avatar" class="reply-avatar">
         @else
             <img src="{{ asset('asset/forums/boi.svg') }}" alt="Male Avatar" class="reply-avatar">
@@ -29,7 +29,8 @@
 
     <!-- Nested Reply Form (Hidden by default) -->
     <div class="nested-reply-form" id="nested-reply-{{ $reply->id }}" style="display: none;">
-        <form class="nested-reply-form-inner" data-parent-id="{{ $reply->id }}" data-post-id="{{ $reply->post_id }}">
+        <form class="nested-reply-form-inner" data-parent-id="{{ $reply->id }}"
+            data-post-id="{{ $reply->post_id }}">
             @csrf
             <textarea class="reply-textarea-small" placeholder="Write your reply..." rows="2" maxlength="500" required></textarea>
             <div class="nested-reply-actions">
@@ -40,9 +41,9 @@
     </div>
 
     <!-- Nested Replies -->
-    @if($reply->replies->count() > 0)
+    @if ($reply->replies->count() > 0)
         <div class="nested-replies">
-            @foreach($reply->replies as $nestedReply)
+            @foreach ($reply->replies as $nestedReply)
                 @include('forum.partials.reply', ['reply' => $nestedReply, 'level' => $level + 1])
             @endforeach
         </div>

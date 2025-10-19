@@ -66,28 +66,22 @@ class GuideSlideshow {
 
         const guide = this.guides[this.currentIndex];
 
-        // Update content with fade animation
-        this.slideshow.classList.add('fade-out');
-        
-        setTimeout(() => {
-            if (this.slideImage) this.slideImage.src = guide.image;
-            if (this.slideTitle) this.slideTitle.textContent = guide.title;
-            if (this.slideDescription) this.slideDescription.textContent = guide.description;
-            if (this.slideCategory) this.slideCategory.textContent = guide.category;
-            if (this.videoButton) this.videoButton.href = guide.videoUrl;
+        // Update content instantly without animation
+        if (this.slideImage) this.slideImage.src = guide.image;
+        if (this.slideTitle) this.slideTitle.textContent = guide.title;
+        if (this.slideDescription) this.slideDescription.textContent = guide.description;
+        if (this.slideCategory) this.slideCategory.textContent = guide.category;
+        if (this.videoButton) this.videoButton.href = guide.videoUrl;
 
-            // Update dots
-            const dots = this.dotsContainer.querySelectorAll('.slide-dot');
-            dots.forEach((dot, idx) => {
-                if (idx === this.currentIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-
-            this.slideshow.classList.remove('fade-out');
-        }, 300);
+        // Update dots
+        const dots = this.dotsContainer.querySelectorAll('.slide-dot');
+        dots.forEach((dot, idx) => {
+            if (idx === this.currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
     }
 
     nextSlide() {

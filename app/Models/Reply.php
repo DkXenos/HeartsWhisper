@@ -20,7 +20,7 @@ class Reply extends Model
     // Reply belongs to a user
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(related: User::class);
     }
 
     // Reply belongs to a post

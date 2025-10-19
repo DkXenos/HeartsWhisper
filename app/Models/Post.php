@@ -22,7 +22,9 @@ class Post extends Model
     // Post has many replies
     public function replies()
     {
-        return $this->hasMany(Reply::class)->whereNull('parent_id')->with('user', 'replies')->latest();
+        return $this->hasMany(Reply::class)
+        ->whereNull('parent_id')
+        ->with('user', 'replies')->latest();
     }
 
     // Get total replies count (including nested)
