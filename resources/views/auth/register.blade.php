@@ -57,17 +57,20 @@
             </div>
 
             <div class="auth-form-group">
-                <label for="gender" class="auth-form-label">Gender</label>
-                <select 
-                    id="gender" 
-                    class="auth-form-select @error('gender') is-invalid @enderror" 
-                    name="gender" 
-                    required
-                >
-                    <option value="">Select your gender</option>
-                    <option value="girl" {{ old('gender') == 'girl' ? 'selected' : '' }}>Girl</option>
-                    <option value="boi" {{ old('gender') == 'boi' ? 'selected' : '' }}>Boy</option>
-                </select>
+                <label class="auth-form-label">Choose Your Gender</label>
+                <div class="gender-selection">
+                    <input type="radio" id="gender-girl" name="gender" value="girl" {{ old('gender') == 'girl' ? 'checked' : '' }} required hidden>
+                    <label for="gender-girl" class="gender-option" data-gender="girl">
+                        <img src="{{ asset('asset/forums/girl.svg') }}" alt="Girl" class="gender-avatar">
+                        <span class="gender-label">Girl</span>
+                    </label>
+                    
+                    <input type="radio" id="gender-boi" name="gender" value="boi" {{ old('gender') == 'boi' ? 'checked' : '' }} required hidden>
+                    <label for="gender-boi" class="gender-option" data-gender="boi">
+                        <img src="{{ asset('asset/forums/boi.svg') }}" alt="Boy" class="gender-avatar">
+                        <span class="gender-label">Boy</span>
+                    </label>
+                </div>
                 @error('gender')
                     <span class="auth-error">{{ $message }}</span>
                 @enderror
