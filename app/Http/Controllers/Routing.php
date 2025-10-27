@@ -27,7 +27,6 @@ class Routing extends Controller
 
     public function showPost(Post $post)
     {
-        // Load the post with all its relationships
         $post->load(['user', 'categories', 'replies.user', 'replies.replies.user']);
 
         return view('forum.show', ['post' => $post]);

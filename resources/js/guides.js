@@ -19,7 +19,7 @@ class GuideSlideshow {
     }
 
     init() {
-        // Get DOM elements
+        
         this.slideshow = document.getElementById('guide-slideshow');
         if (!this.slideshow) return;
 
@@ -32,12 +32,12 @@ class GuideSlideshow {
         this.nextButton = document.getElementById('next-slide');
         this.dotsContainer = document.getElementById('slide-dots');
 
-        // Initialize slideshow
+        
         this.createDots();
         this.showSlide(0);
         this.attachEventListeners();
         
-        // Auto-advance slideshow every 5 seconds
+        
         this.startAutoPlay();
     }
 
@@ -55,7 +55,7 @@ class GuideSlideshow {
     }
 
     showSlide(index) {
-        // Wrap around if out of bounds
+        
         if (index >= this.guides.length) {
             this.currentIndex = 0;
         } else if (index < 0) {
@@ -66,14 +66,14 @@ class GuideSlideshow {
 
         const guide = this.guides[this.currentIndex];
 
-        // Update content instantly without animation
+        
         if (this.slideImage) this.slideImage.src = guide.image;
         if (this.slideTitle) this.slideTitle.textContent = guide.title;
         if (this.slideDescription) this.slideDescription.textContent = guide.description;
         if (this.slideCategory) this.slideCategory.textContent = guide.category;
         if (this.videoButton) this.videoButton.href = guide.videoUrl;
 
-        // Update dots
+        
         const dots = this.dotsContainer.querySelectorAll('.slide-dot');
         dots.forEach((dot, idx) => {
             if (idx === this.currentIndex) {
@@ -107,7 +107,7 @@ class GuideSlideshow {
             this.nextButton.addEventListener('click', () => this.nextSlide());
         }
 
-        // Keyboard navigation
+        
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') this.prevSlide();
             if (e.key === 'ArrowRight') this.nextSlide();
@@ -130,7 +130,7 @@ class GuideSlideshow {
     }
 }
 
-// Initialize slideshow when DOM is ready
+
 document.addEventListener('DOMContentLoaded', () => {
     const slideshow = new GuideSlideshow();
     slideshow.init();

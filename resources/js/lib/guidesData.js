@@ -1,7 +1,4 @@
-/**
- * Guides Data Library
- * Contains all guide information including images and YouTube video links
- */
+
 
 export const guidesData = [
     {

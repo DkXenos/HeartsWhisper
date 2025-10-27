@@ -101,75 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Handle reply form submission
-    const replyForms = document.querySelectorAll('.reply-form');
-    
-    replyForms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const textarea = this.querySelector('.reply-textarea');
-            const postId = this.dataset.postId;
-            const submitBtn = this.querySelector('.reply-submit-btn');
-            
-            // Validate textarea is not empty
-            if (!textarea.value.trim()) {
-                alert('Please write a reply before submitting.');
-                return;
-            }
-            
-            // Disable submit button to prevent double submission
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Posting...';
-            
-            console.log('Reply submitted for post:', postId);
-            console.log('Reply content:', textarea.value);
-            
-            // TODO: Implement AJAX request to save the reply
-            // Example:
-            // fetch('/api/posts/' + postId + '/replies', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-            //     },
-            //     body: JSON.stringify({
-            //         content: textarea.value
-            //     })
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     // Handle success
-            //     console.log('Reply saved:', data);
-            // })
-            // .catch(error => {
-            //     console.error('Error:', error);
-            // });
-            
-            // Temporary placeholder alert
-            setTimeout(() => {
-                alert('Reply functionality will be implemented with backend integration!\n\nYour reply: ' + textarea.value);
-                
-                // Clear the form
-                textarea.value = '';
-                const charCount = this.querySelector('.reply-char-count .current');
-                if (charCount) {
-                    charCount.textContent = '0';
-                    charCount.style.color = '#374151';
-                }
-                
-                // Re-enable submit button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Post Reply';
-                
-                // Hide the reply section
-                const replySection = document.getElementById(`reply-section-${postId}`);
-                if (replySection) {
-                    replySection.style.display = 'none';
-                }
-            }, 500);
-        });
-    });
     
     // Optional: Close reply section when clicking outside
     document.addEventListener('click', function(e) {
@@ -347,43 +278,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     charCount.style.color = '#374151';
                 }
             }
-        });
-    }
-    
-    // Handle main reply form submission on detail page
-    const mainReplyForm = document.querySelector('.main-reply-form');
-    if (mainReplyForm) {
-        mainReplyForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const textarea = this.querySelector('.reply-textarea');
-            const postId = this.dataset.postId;
-            const submitBtn = this.querySelector('.reply-submit-btn');
-            
-            if (!textarea.value.trim()) {
-                alert('Please write a reply before submitting.');
-                return;
-            }
-            
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Posting...';
-            
-            console.log('Main reply submitted for post:', postId);
-            console.log('Content:', textarea.value);
-            
-            // TODO: Implement AJAX request
-            
-            setTimeout(() => {
-                alert('Reply will be saved!\n\nReply: ' + textarea.value);
-                textarea.value = '';
-                const charCount = this.querySelector('.reply-char-count .current');
-                if (charCount) {
-                    charCount.textContent = '0';
-                    charCount.style.color = '#374151';
-                }
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Post Reply';
-            }, 500);
         });
     }
 });
