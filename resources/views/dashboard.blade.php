@@ -1,20 +1,17 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
 
-@section('title', 'Dashboard - Hearts Whisper')
-
-@section('content')
-    <section class="card">
-        <h2>User Dashboard</h2>
-        <p class="muted">Simple dashboard placeholder. Personal stats and quick actions.</p>
-        <div class="stack">
-            <div class="card">
-                <h4>Profile Summary</h4>
-                <p class="muted">Username: demo_user</p>
-            </div>
-            <div class="card">
-                <h4>Recent Activity</h4>
-                <p class="muted">No recent activity.</p>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    {{ __("You're logged in!") }}
+                </div>
             </div>
         </div>
-    </section>
-@endsection
+    </div>
+</x-app-layout>
