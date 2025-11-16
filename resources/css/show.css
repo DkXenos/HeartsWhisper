@@ -1092,3 +1092,71 @@
         flex-wrap: wrap;
     }
 }
+
+/* Post Actions Buttons (Edit, Delete, Like) */
+.post-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: 2px solid #e5e7eb;
+    color: #6b7280;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+    font-family: 'Comfortaa', sans-serif;
+    text-decoration: none;
+}
+
+.action-btn:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+    border-color: #d1d5db;
+}
+
+.like-toggle-btn:hover {
+    background-color: #fef2f2;
+    border-color: #fca5a5;
+    color: #dc2626;
+}
+
+.edit-btn:hover {
+    background-color: #eff6ff;
+    border-color: #93c5fd;
+    color: #2563eb;
+}
+
+.delete-btn {
+    background: none;
+    border: 2px solid #e5e7eb;
+    color: #6b7280;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #fef2f2;
+    border-color: #fca5a5;
+    color: #dc2626;
+}
+
+.like-icon {
+    width: 20px;
+    height: 20px;
+}

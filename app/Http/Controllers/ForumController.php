@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -62,5 +63,74 @@ class ForumController extends Controller
         return view('forum.show', [
             'post' => $post
         ]);
+    }
+
+    /**
+     * Show the form for editing the specified post.
+     */
+    public function edit($id)
+    {
+        $post = Post::with('categories')->findOrFail($id);
+        
+        // Check if user is the post owner
+        if ($post->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $categories = Category::all();
+        
+        return view('forum.edit', [
+            'post' => $post,
+            'categories' => $categories
+        ]);
+    }
+
+    /**
+     * Update the specified post.
+     */
+    public function update(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
+        
+        // Check if user is the post owner
+        if ($post->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $request->validate([
+            'content' => 'required|string|max:5000',
+            'categories' => 'nullable|array',
+            'categories.*' => 'exists:categories,id'
+        ]);
+
+        $post->update([
+            'content' => $request->content,
+        ]);
+
+        // Sync categories
+        if ($request->has('categories')) {
+            $post->categories()->sync($request->categories);
+        } else {
+            $post->categories()->detach();
+        }
+
+        return redirect()->route('forums.show', $post->id)->with('success', 'Post updated successfully!');
+    }
+
+    /**
+     * Remove the specified post.
+     */
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+        
+        // Check if user is the post owner
+        if ($post->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $post->delete();
+
+        return redirect()->route('forums.index')->with('success', 'Post deleted successfully!');
     }
 }

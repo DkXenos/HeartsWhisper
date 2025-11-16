@@ -15,6 +15,12 @@
         <img src="asset/homepage/pillar-left.svg" alt="" class="pillar-left">
         <img src="asset/homepage/pillar-right.svg" alt="" class="pillar-right">
 
+        @if (session('success'))
+            <div class="alert alert-success" style="background: #d1fae5; border: 2px solid #10b981; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                <p style="color: #065f46; margin: 0;">{{ session('success') }}</p>
+            </div>
+        @endif
+
         <div class="forum-header">
             <div>
                 <h2>Forum Discussions</h2>

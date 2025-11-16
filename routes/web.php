@@ -22,6 +22,9 @@ Route::get('/forums/create', function () {
 })->middleware('auth')->name('forums.create');
 Route::post('/forums', [ForumController::class, 'store'])->middleware('auth')->name('forums.store');
 Route::get('/forums/{id}', [ForumController::class, 'show'])->name('forums.show');
+Route::get('/forums/{id}/edit', [ForumController::class, 'edit'])->middleware('auth')->name('forums.edit');
+Route::put('/forums/{id}', [ForumController::class, 'update'])->middleware('auth')->name('forums.update');
+Route::delete('/forums/{id}', [ForumController::class, 'destroy'])->middleware('auth')->name('forums.destroy');
 
 // Reply routes
 Route::post('/posts/{post}/replies', [ReplyController::class, 'store'])->middleware('auth')->name('replies.store');
