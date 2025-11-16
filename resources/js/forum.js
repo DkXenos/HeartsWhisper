@@ -78,6 +78,67 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Handle reply form submission in forum index
+    const replyForms = document.querySelectorAll('.reply-form');
+    
+    replyForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const postId = this.dataset.postId;
+            const textarea = this.querySelector('.reply-textarea');
+            const submitBtn = this.querySelector('.reply-submit-btn');
+            
+            if (!textarea.value.trim()) {
+                alert('Please write a reply before submitting.');
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Posting...';
+            
+            fetch(`/posts/${postId}/replies`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                },
+                body: JSON.stringify({
+                    content: textarea.value
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert('Reply posted successfully!');
+                    textarea.value = '';
+                    document.getElementById(`reply-section-${postId}`).style.display = 'none';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Post Reply';
+                    
+                    // Optionally redirect to the post detail page
+                    // window.location.href = `/forums/${postId}`;
+                } else {
+                    alert('Failed to post reply. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Post Reply';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to post reply. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Post Reply';
+            });
+        });
+    });
+    
     // Character count for reply textarea
     const replyTextareas = document.querySelectorAll('.reply-textarea');
     
@@ -248,15 +309,41 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Parent Reply ID:', parentId);
             console.log('Content:', textarea.value);
             
-            // TODO: Implement AJAX request to save nested reply
-            
-            setTimeout(() => {
-                alert('Nested reply will be saved!\n\nReply: ' + textarea.value);
-                textarea.value = '';
+            // Send AJAX request to save nested reply
+            fetch(`/posts/${postId}/replies`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                },
+                body: JSON.stringify({
+                    content: textarea.value,
+                    parent_id: parentId
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert('Reply posted successfully! Refreshing page...');
+                    window.location.reload();
+                } else {
+                    alert('Failed to post reply. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Reply';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to post reply. Please try again.');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Reply';
-                document.getElementById(`nested-reply-${parentId}`).style.display = 'none';
-            }, 500);
+            });
         });
     });
     
@@ -287,9 +374,9 @@ function toggleLike(event, id, type) {
     event.stopPropagation();
     
     const button = event.currentTarget;
-    const icon = button.querySelector('.like-icon');
-    const text = button.querySelector('.like-text');
-    const voteCount = button.closest('.post-card').querySelector('.vote-count');
+    const icon = button.querySelector('.like-icon, .like-icon-small');
+    const textSpan = button.querySelector('.like-text');
+    const countSpan = button.querySelector('.like-count');
     
     const url = type === 'post' ? `/posts/${id}/like` : `/replies/${id}/like`;
     
@@ -307,21 +394,116 @@ function toggleLike(event, id, type) {
         button.dataset.liked = data.liked;
         
         // Update icon
-        icon.src = data.liked ? '/asset/forums/liked.svg' : '/asset/forums/unliked.svg';
-        
-        // Update text
-        if (text) {
-            text.textContent = data.liked ? 'Liked' : 'Like';
+        if (icon) {
+            icon.src = data.liked ? '/asset/forums/liked.svg' : '/asset/forums/unliked.svg';
         }
         
-        // Update vote count
+        // Update text
+        if (textSpan) {
+            textSpan.textContent = data.liked ? 'Liked' : 'Like';
+        }
+        
+        // Update count
+        if (countSpan) {
+            countSpan.textContent = '(' + data.likes_count + ')';
+        }
+        
+        // For forum index page - update the vote count in the avatar section
+        const voteCount = button.closest('.post-card')?.querySelector('.vote-count');
         if (voteCount) {
             voteCount.textContent = data.likes_count;
+        }
+        
+        // For show page - update the large vote count
+        const voteCountLarge = button.closest('.post-detail-card')?.querySelector('.vote-count-large');
+        if (voteCountLarge) {
+            voteCountLarge.textContent = data.likes_count;
         }
     })
     .catch(error => {
         console.error('Error:', error);
         alert('Failed to update like. Please try again.');
+    });
+}
+
+// Edit reply functionality
+function editReply(replyId) {
+    const contentDiv = document.getElementById(`reply-content-${replyId}`);
+    const editForm = document.getElementById(`reply-edit-${replyId}`);
+    
+    contentDiv.style.display = 'none';
+    editForm.style.display = 'block';
+}
+
+function cancelEdit(replyId) {
+    const contentDiv = document.getElementById(`reply-content-${replyId}`);
+    const editForm = document.getElementById(`reply-edit-${replyId}`);
+    
+    contentDiv.style.display = 'block';
+    editForm.style.display = 'none';
+}
+
+function updateReply(event, replyId) {
+    event.preventDefault();
+    
+    const textarea = document.getElementById(`edit-textarea-${replyId}`);
+    const content = textarea.value;
+    
+    fetch(`/replies/${replyId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+        },
+        body: JSON.stringify({ content: content })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update the content
+            const contentDiv = document.getElementById(`reply-content-${replyId}`);
+            contentDiv.querySelector('p').textContent = content;
+            
+            // Hide edit form and show content
+            cancelEdit(replyId);
+            
+            // Show success message
+            alert('Reply updated successfully!');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to update reply. Please try again.');
+    });
+}
+
+function deleteReply(replyId) {
+    if (!confirm('Are you sure you want to delete this reply? This action cannot be undone.')) {
+        return;
+    }
+    
+    fetch(`/replies/${replyId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Remove the reply element from DOM
+            const replyElement = document.getElementById(`reply-content-${replyId}`)?.closest('.reply-item');
+            if (replyElement) {
+                replyElement.remove();
+            }
+            
+            alert('Reply deleted successfully!');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to delete reply. Please try again.');
     });
 }
 

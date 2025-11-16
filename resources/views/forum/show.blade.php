@@ -58,9 +58,15 @@
                 </div>
 
                 <div class="post-actions">
-                    <button class="action-btn like-toggle-btn" data-post-id="{{ $post->id }}" data-liked="false">
-                        <img src="{{ asset('asset/forums/unliked.svg') }}" alt="like" class="like-icon">
-                        Like ({{ $post->likes_count }})
+                    @php
+                        $isLiked = auth()->check() && $post->isLikedBy(auth()->user());
+                    @endphp
+                    <button class="action-btn like-toggle-btn" 
+                            onclick="toggleLike(event, {{ $post->id }}, 'post')" 
+                            data-post-id="{{ $post->id }}" 
+                            data-liked="{{ $isLiked ? 'true' : 'false' }}">
+                        <img src="{{ asset($isLiked ? 'asset/forums/liked.svg' : 'asset/forums/unliked.svg') }}" alt="like" class="like-icon">
+                        <span class="like-text">{{ $isLiked ? 'Liked' : 'Like' }}</span> <span class="like-count">({{ $post->likes_count }})</span>
                     </button>
                     
                     @auth

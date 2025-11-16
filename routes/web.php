@@ -28,6 +28,8 @@ Route::delete('/forums/{id}', [ForumController::class, 'destroy'])->middleware('
 
 // Reply routes
 Route::post('/posts/{post}/replies', [ReplyController::class, 'store'])->middleware('auth')->name('replies.store');
+Route::put('/replies/{reply}', [ReplyController::class, 'update'])->middleware('auth')->name('replies.update');
+Route::delete('/replies/{reply}', [ReplyController::class, 'destroy'])->middleware('auth')->name('replies.destroy');
 
 // Like routes
 Route::post('/posts/{post}/like', [LikeController::class, 'likePost'])->middleware('auth')->name('posts.like');

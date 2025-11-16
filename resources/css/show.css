@@ -1160,3 +1160,35 @@
     width: 20px;
     height: 20px;
 }
+
+/* Reply Edit and Delete Buttons */
+.edit-reply-btn:hover {
+    background-color: #eff6ff;
+    color: #2563eb;
+}
+
+.delete-reply-btn:hover {
+    background-color: #fef2f2;
+    color: #dc2626;
+}
+
+.reply-edit-form {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-radius: 8px;
+}
+
+.reply-edit-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    font-family: 'Comfortaa', sans-serif;
+    resize: vertical;
+}
+
+.reply-edit-form textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+}

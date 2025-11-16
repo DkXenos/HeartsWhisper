@@ -33,4 +33,52 @@ class ReplyController extends Controller
         return redirect()->route('forums.show', $post->id)
             ->with('success', 'Reply posted successfully!');
     }
+
+    public function update(Request $request, Reply $reply)
+    {
+        // Check if user is the reply owner
+        if ($reply->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $request->validate([
+            'content' => 'required|string|max:1000'
+        ]);
+
+        $reply->update([
+            'content' => $request->content,
+        ]);
+
+        if ($request->expectsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Reply updated successfully!',
+                'reply' => $reply
+            ]);
+        }
+
+        return redirect()->route('forums.show', $reply->post_id)
+            ->with('success', 'Reply updated successfully!');
+    }
+
+    public function destroy(Reply $reply)
+    {
+        // Check if user is the reply owner
+        if ($reply->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $postId = $reply->post_id;
+        $reply->delete();
+
+        if (request()->expectsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Reply deleted successfully!'
+            ]);
+        }
+
+        return redirect()->route('forums.show', $postId)
+            ->with('success', 'Reply deleted successfully!');
+    }
 }
