@@ -9,6 +9,12 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'content',
+        'likes_count'
+    ];
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);

@@ -2,26 +2,38 @@
    AUTH PAGES (LOGIN & REGISTER) STYLES
    ============================================ */
 
-/* Active state for girl */
-input[type="radio"]:checked + .gender-option[data-gender="girl"] {
-    border-color: #ffb5d7;
+/* Active state for female */
+input[type="radio"]:checked + .gender-option[data-gender="female"] {
+    border-color: #ffb5d7 !important;
     background: linear-gradient(
         135deg,
-        rgba(255, 181, 215, 0.1),
-        rgba(255, 158, 201, 0.05)
-    );
-    box-shadow: 0 0 0 4px rgba(255, 181, 215, 0.2);
+        rgba(255, 181, 215, 0.2),
+        rgba(255, 158, 201, 0.1)
+    ) !important;
+    box-shadow: 0 0 0 4px rgba(255, 181, 215, 0.3) !important;
+    transform: scale(1.05);
 }
 
-/* Active state for boy */
-input[type="radio"]:checked + .gender-option[data-gender="boi"] {
-    border-color: #75abdc;
+/* Active state for male */
+input[type="radio"]:checked + .gender-option[data-gender="male"] {
+    border-color: #75abdc !important;
     background: linear-gradient(
         135deg,
-        rgba(117, 171, 220, 0.1),
-        rgba(90, 150, 212, 0.05)
-    );
-    box-shadow: 0 0 0 4px rgba(117, 171, 220, 0.2);
+        rgba(117, 171, 220, 0.2),
+        rgba(90, 150, 212, 0.1)
+    ) !important;
+    box-shadow: 0 0 0 4px rgba(117, 171, 220, 0.3) !important;
+    transform: scale(1.05);
+}
+
+/* Hover states */
+.gender-option:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+.gender-option {
+    transition: all 0.3s ease;
 }
 
 /* ============================================

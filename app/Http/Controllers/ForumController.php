@@ -20,4 +20,39 @@ class ForumController extends Controller
             'posts' => $posts
         ]);
     }
+
+    /**
+     * Store a newly created post.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'content' => 'required|string|max:5000',
+            'categories' => 'nullable|array',
+            'categories.*' => 'exists:categories,id'
+        ]);
+
+        $post = Post::create([
+            'user_id' => auth()->id(),
+            'content' => $request->content,
+        ]);
+
+        if ($request->has('categories')) {
+            $post->categories()->attach($request->categories);
+        }
+
+        return redirect()->route('forums.index')->with('success', 'Post created successfully!');
+    }
+
+    /**
+     * Display the specified post.
+     */
+    public function show($id)
+    {
+        $post = Post::with(['user', 'categories', 'replies.user'])->findOrFail($id);
+
+        return view('forum.show', [
+            'post' => $post
+        ]);
+    }
 }

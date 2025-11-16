@@ -19,24 +19,44 @@
             <p class="create-post-muted">Whisper us your recent story!</p>
         </div>
 
-        <form class="create-post-form">
+        @if ($errors->any())
+            <div class="alert alert-error">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <form class="create-post-form" method="POST" action="{{ route('forums.store') }}">
             @csrf
 
             <div class="create-form-group">
                 <label for="content" class="create-form-label">What's on your mind?</label>
                 <textarea id="content" name="content" class="create-form-textarea" rows="8"
-                    placeholder="Share your thoughts, feelings, or experiences..." required></textarea>
+                    placeholder="Share your thoughts, feelings, or experiences..." required>{{ old('content') }}</textarea>
+                @error('content')
+                    <span class="error-message">{{ $message }}</span>
+                @enderror
                 <div class="create-character-count">
                     <span class="create-current-count">0</span> / <span class="create-max-count">5000</span> characters
                 </div>
             </div>
 
             <div class="create-form-group">
-                <label class="create-form-label">Categories</label>
+                <label class="create-form-label">Categories (Optional)</label>
                 <div class="create-categories-grid">
                     @foreach ($categories as $category)
                         <label class="create-category-checkbox">
-                            <input type="checkbox" name="categories[]" value="{{ $category->id }}">
+                            <input type="checkbox" name="categories[]" value="{{ $category->id }}"
+                                {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}>
                             <span class="create-category-label">{{ $category->name }}</span>
                         </label>
                     @endforeach
@@ -44,7 +64,7 @@
             </div>
 
             <div class="create-form-actions">
-                <a href="{{ url('/forums') }}" class="create-btn-cancel">Cancel</a>
+                <a href="{{ route('forums.index') }}" class="create-btn-cancel">Cancel</a>
                 <button type="submit" class="create-btn-submit">Share Post</button>
             </div>
         </form>

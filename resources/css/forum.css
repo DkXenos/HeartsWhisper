@@ -2,6 +2,63 @@
    FORUM PAGE STYLES
    ============================================ */
 
+/* Dashboard Stats */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ffb5d7;
+}
+
+.stat-card h3 {
+    font-size: 2.5rem;
+    color: #5e4124;
+    margin: 0;
+    font-family: "Pearl";
+}
+
+.stat-card p {
+    font-size: 1rem;
+    color: #8b7355;
+    margin: 0.5rem 0 0;
+    font-family: "Comfortaa";
+}
+
+.dashboard-section {
+    margin-top: 2rem;
+}
+
+.dashboard-section h3 {
+    font-size: 1.5rem;
+    color: #5e4124;
+    margin-bottom: 1rem;
+    font-family: "Pearl";
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 1rem;
+    border: 2px dashed #e5e7eb;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+    color: #8b7355;
+    margin-bottom: 1.5rem;
+    font-family: "Comfortaa";
+}
+
 /* Animations */
 @keyframes slideDown {
     from {

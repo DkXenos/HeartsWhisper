@@ -33,7 +33,9 @@
 
             @auth
                 <li class="nav-item">
-                    <span class="navbar-text">Hi, {{ auth()->user()->username }}</span>
+                    <a href="{{ route('dashboard') }}" class="button-navbar">
+                        Hi, {{ auth()->user()->username }}
+                    </a>
                 </li>
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
@@ -65,7 +67,9 @@
 
             @auth
                 <li class="mobile-nav-item">
-                    <span class="mobile-navbar-text">Hi, {{ auth()->user()->username }}</span>
+                    <a href="{{ route('dashboard') }}" class="mobile-nav-link">
+                        Hi, {{ auth()->user()->username }}
+                    </a>
                 </li>
                 <li class="mobile-nav-item">
                     <form method="POST" action="{{ route('logout') }}">
