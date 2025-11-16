@@ -29,6 +29,17 @@ class Reply extends Model
         return $this->belongsTo(Post::class);
     }
 
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function isLikedBy($user)
+    {
+        if (!$user) return false;
+        return $this->likes()->where('user_id', $user->id)->exists();
+    }
+
     // Parent reply (for nested replies)
     public function parent()
     {

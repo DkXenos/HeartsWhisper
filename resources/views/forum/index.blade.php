@@ -63,11 +63,20 @@
                                 <img src="{{ asset('asset/forums/replybutton.svg') }}" alt="reply" class="reply-icon">
                                 Reply
                             </button>
-                            <button class="action-btn like-toggle-btn" data-post-id="{{ $post->id }}"
-                                data-liked="false" onclick="event.stopPropagation()">
-                                <img src="{{ asset('asset/forums/unliked.svg') }}" alt="like" class="like-icon">
-                                Like
-                            </button>
+                            @auth
+                                <button class="action-btn like-toggle-btn" data-post-id="{{ $post->id }}"
+                                    data-liked="{{ $post->isLikedBy(auth()->user()) ? 'true' : 'false' }}" 
+                                    onclick="toggleLike(event, {{ $post->id }}, 'post')">
+                                    <img src="{{ asset($post->isLikedBy(auth()->user()) ? 'asset/forums/liked.svg' : 'asset/forums/unliked.svg') }}" 
+                                         alt="like" class="like-icon">
+                                    <span class="like-text">{{ $post->isLikedBy(auth()->user()) ? 'Liked' : 'Like' }}</span>
+                                </button>
+                            @else
+                                <a href="{{ route('login') }}" class="action-btn">
+                                    <img src="{{ asset('asset/forums/unliked.svg') }}" alt="like" class="like-icon">
+                                    Like
+                                </a>
+                            @endauth
                         </div>
 
                         <!-- Reply Section (Hidden by default) -->

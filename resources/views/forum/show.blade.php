@@ -21,6 +21,12 @@
             </a>
         </div>
 
+        @if (session('success'))
+            <div class="alert alert-success" style="background: #d1fae5; border: 2px solid #10b981; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                <p style="color: #065f46; margin: 0;">{{ session('success') }}</p>
+            </div>
+        @endif
+
         <!-- Main Post -->
         <div class="post-detail-card">
             <div class="post-detail-votes">
@@ -63,16 +69,25 @@
         <!-- Reply Form -->
         <div class="reply-form-container">
             <h3>Leave a Reply</h3>
-            <form class="main-reply-form" data-post-id="{{ $post->id }}">
-                @csrf
-                <textarea class="reply-textarea" placeholder="Share your thoughts..." rows="4" maxlength="1000" required></textarea>
-                <div class="reply-actions">
-                    <span class="reply-char-count">
-                        <span class="current">0</span> / 1000
-                    </span>
-                    <button type="submit" class="reply-submit-btn">Post Reply</button>
+            @auth
+                <form class="main-reply-form" method="POST" action="{{ route('replies.store', $post->id) }}">
+                    @csrf
+                    <textarea name="content" class="reply-textarea" placeholder="Share your thoughts..." rows="4" maxlength="1000" required>{{ old('content') }}</textarea>
+                    @error('content')
+                        <span class="error-message">{{ $message }}</span>
+                    @enderror
+                    <div class="reply-actions">
+                        <span class="reply-char-count">
+                            <span class="current">0</span> / 1000
+                        </span>
+                        <button type="submit" class="reply-submit-btn">Post Reply</button>
+                    </div>
+                </form>
+            @else
+                <div class="login-prompt">
+                    <p>You must be <a href="{{ route('login') }}">logged in</a> to reply.</p>
                 </div>
-            </form>
+            @endauth
         </div>
 
         <!-- Replies Section -->

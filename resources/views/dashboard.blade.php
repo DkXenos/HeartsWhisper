@@ -17,6 +17,10 @@
                 <h2>My Dashboard</h2>
                 <p class="muted">Welcome back, {{ auth()->user()->username }}!</p>
             </div>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="create-post-btn">Logout</button>
+            </form>
         </div>
 
         <!-- Statistics Cards -->

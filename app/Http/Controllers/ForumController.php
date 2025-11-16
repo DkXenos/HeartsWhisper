@@ -49,7 +49,15 @@ class ForumController extends Controller
      */
     public function show($id)
     {
-        $post = Post::with(['user', 'categories', 'replies.user'])->findOrFail($id);
+        $post = Post::with([
+            'user',
+            'categories',
+            'replies' => function($query) {
+                $query->whereNull('parent_id')
+                      ->with(['user', 'replies.user', 'replies.replies.user'])
+                      ->latest();
+            }
+        ])->findOrFail($id);
 
         return view('forum.show', [
             'post' => $post

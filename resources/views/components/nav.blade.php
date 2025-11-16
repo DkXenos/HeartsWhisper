@@ -37,12 +37,6 @@
                         Hi, {{ auth()->user()->username }}
                     </a>
                 </li>
-                <li class="nav-item">
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="button-navbar-secondary">Logout</button>
-                    </form>
-                </li>
             @endauth
         </ul>
     </div>
@@ -70,12 +64,6 @@
                     <a href="{{ route('dashboard') }}" class="mobile-nav-link">
                         Hi, {{ auth()->user()->username }}
                     </a>
-                </li>
-                <li class="mobile-nav-item">
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="mobile-nav-link mobile-logout-btn">Logout</button>
-                    </form>
                 </li>
             @endauth
         </ul>

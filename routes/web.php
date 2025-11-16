@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\ReplyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,6 +23,13 @@ Route::get('/forums/create', function () {
 Route::post('/forums', [ForumController::class, 'store'])->middleware('auth')->name('forums.store');
 Route::get('/forums/{id}', [ForumController::class, 'show'])->name('forums.show');
 
+// Reply routes
+Route::post('/posts/{post}/replies', [ReplyController::class, 'store'])->middleware('auth')->name('replies.store');
+
+// Like routes
+Route::post('/posts/{post}/like', [LikeController::class, 'likePost'])->middleware('auth')->name('posts.like');
+Route::post('/replies/{reply}/like', [LikeController::class, 'likeReply'])->middleware('auth')->name('replies.like');
+
 Route::get('/dashboard', function () {
     $user = auth()->user();
     $posts = \App\Models\Post::where('user_id', $user->id)
@@ -30,7 +39,14 @@ Route::get('/dashboard', function () {
         ->paginate(10);
     
     $repliesCount = \App\Models\Reply::where('user_id', $user->id)->count();
-    $totalLikes = \App\Models\Post::where('user_id', $user->id)->sum('likes_count');
+    
+    // Total likes from user's posts
+    $postLikes = \App\Models\Post::where('user_id', $user->id)->sum('likes_count');
+    
+    // Total likes from user's replies
+    $replyLikes = \App\Models\Reply::where('user_id', $user->id)->sum('likes_count');
+    
+    $totalLikes = $postLikes + $replyLikes;
     
     return view('dashboard', [
         'posts' => $posts,

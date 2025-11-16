@@ -282,4 +282,49 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Like functionality
+function toggleLike(event, id, type) {
+    event.stopPropagation();
+    
+    const button = event.currentTarget;
+    const icon = button.querySelector('.like-icon');
+    const text = button.querySelector('.like-text');
+    const voteCount = button.closest('.post-card').querySelector('.vote-count');
+    
+    const url = type === 'post' ? `/posts/${id}/like` : `/replies/${id}/like`;
+    
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+        },
+        credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Update button state
+        button.dataset.liked = data.liked;
+        
+        // Update icon
+        icon.src = data.liked ? '/asset/forums/liked.svg' : '/asset/forums/unliked.svg';
+        
+        // Update text
+        if (text) {
+            text.textContent = data.liked ? 'Liked' : 'Like';
+        }
+        
+        // Update vote count
+        if (voteCount) {
+            voteCount.textContent = data.likes_count;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to update like. Please try again.');
+    });
+}
+
+
+
 
