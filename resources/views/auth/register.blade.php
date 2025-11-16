@@ -7,86 +7,116 @@
 @endsection
 
 @section('content')
-    <img src="{{ asset('Asset/login/registerbg.svg') }}" alt="Register Background"
+    <img src="{{ asset('asset/login/loginbg.svg') }}" alt="Register Background"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
 
+    <img src="{{ asset('asset/homepage/pillar-left.svg') }}" alt="" class="pillar-left">
+    <img src="{{ asset('asset/homepage/pillar-right.svg') }}" alt="" class="pillar-right">
+
     <div class="auth-container">
-        <div class="auth-form-wrapper">
-            <img src="{{ asset('Asset/login/loginformbg2.svg') }}" alt="Form Background" class="form-background">
-            
-            <div class="auth-form-content">
-                <h2 class="auth-title">Create Account</h2>
+        <img src="asset/login/registerbg.svg" alt="register bg" class="registerbg">
+        
 
-                <form method="POST" action="{{ route('register') }}" class="auth-form">
-                    @csrf
-
-                    <!-- Username -->
-                    <div class="form-group">
-                        <label for="username" class="form-label">Username</label>
-                        <input id="username" type="text" name="username" value="{{ old('username') }}" 
-                               required autofocus autocomplete="username" class="form-input">
-                        @error('username')
-                            <span class="error-message">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <!-- Email Address -->
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input id="email" type="email" name="email" value="{{ old('email') }}" 
-                               required autocomplete="email" class="form-input">
-                        @error('email')
-                            <span class="error-message">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <!-- Gender -->
-                    <div class="form-group">
-                        <label for="gender" class="form-label">Gender</label>
-                        <select id="gender" name="gender" class="form-input">
-                            <option value="">Select Gender (Optional)</option>
-                            <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
-                            <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
-                        </select>
-                        @error('gender')
-                            <span class="error-message">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <!-- Password -->
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
-                        <input id="password" type="password" name="password" 
-                               required autocomplete="new-password" class="form-input">
-                        @error('password')
-                            <span class="error-message">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <!-- Confirm Password -->
-                    <div class="form-group">
-                        <label for="password_confirmation" class="form-label">Confirm Password</label>
-                        <input id="password_confirmation" type="password" name="password_confirmation" 
-                               required autocomplete="new-password" class="form-input">
-                        @error('password_confirmation')
-                            <span class="error-message">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="submit" class="btn-primary">
-                            Register
-                        </button>
-                        
-                        <div class="auth-links">
-                            <a href="{{ route('login') }}" class="auth-link">
-                                Already have an account? Login
-                            </a>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        <div class="auth-header">
+            <h2>Create Account</h2>
+            <p>Join our community and share your stories</p>
         </div>
+
+        <form class="auth-form" method="POST" action="{{ route('register') }}">
+            @csrf
+
+            <div class="auth-form-group">
+                <label for="username" class="auth-form-label">Username</label>
+                <input 
+                    id="username" 
+                    type="text" 
+                    class="auth-form-input @error('username') is-invalid @enderror" 
+                    name="username" 
+                    value="{{ old('username') }}" 
+                    placeholder="Choose a username"
+                    required 
+                    autocomplete="username" 
+                    autofocus
+                >
+                @error('username')
+                    <span class="auth-error">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="auth-form-group">
+                <label for="email" class="auth-form-label">Email Address</label>
+                <input 
+                    id="email" 
+                    type="email" 
+                    class="auth-form-input @error('email') is-invalid @enderror" 
+                    name="email" 
+                    value="{{ old('email') }}" 
+                    placeholder="Enter your email"
+                    required 
+                    autocomplete="email"
+                >
+                @error('email')
+                    <span class="auth-error">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="auth-form-group">
+                <label class="auth-form-label">Choose Your Gender</label>
+                <div class="gender-selection">
+                    <input type="radio" id="gender-female" name="gender" value="female" {{ old('gender') == 'female' ? 'checked' : '' }} required hidden>
+                    <label for="gender-female" class="gender-option" data-gender="female">
+                        <img src="{{ asset('asset/forums/girl.svg') }}" alt="Girl" class="gender-avatar">
+                        <span class="gender-label">Girl</span>
+                    </label>
+                    
+                    <input type="radio" id="gender-male" name="gender" value="male" {{ old('gender') == 'male' ? 'checked' : '' }} required hidden>
+                    <label for="gender-male" class="gender-option" data-gender="male">
+                        <img src="{{ asset('asset/forums/boi.svg') }}" alt="Boy" class="gender-avatar">
+                        <span class="gender-label">Boy</span>
+                    </label>
+                </div>
+                @error('gender')
+                    <span class="auth-error">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="auth-form-group">
+                <label for="password" class="auth-form-label">Password</label>
+                <input 
+                    id="password" 
+                    type="password" 
+                    class="auth-form-input @error('password') is-invalid @enderror" 
+                    name="password" 
+                    placeholder="Create a password"
+                    required 
+                    autocomplete="new-password"
+                >
+                @error('password')
+                    <span class="auth-error">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="auth-form-group">
+                <label for="password-confirm" class="auth-form-label">Confirm Password</label>
+                <input 
+                    id="password-confirm" 
+                    type="password" 
+                    class="auth-form-input" 
+                    name="password_confirmation" 
+                    placeholder="Confirm your password"
+                    required 
+                    autocomplete="new-password"
+                >
+            </div>
+
+            <div class="auth-form-actions">
+                <button type="submit" class="auth-btn-submit">Create Account</button>
+            </div>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="{{ route('login') }}">Login here</a></p>
+            </div>
+        </form>
     </div>
 @endsection
 
