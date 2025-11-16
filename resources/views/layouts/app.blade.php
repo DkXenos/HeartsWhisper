@@ -12,14 +12,16 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/css/site.css', 'resources/js/app.js'])
+        
+        <!-- Page Specific Styles -->
+        @yield('styles')
     </head>
     <body class="font-sans antialiased">
+        <!-- Custom Navbar -->
+        <x-nav />
+        
         <div class="min-h-screen bg-gray-100">
-            @auth
-                @include('layouts.navigation')
-            @endauth
-
             <!-- Page Heading -->
             @isset($header)
                 <header class="bg-white shadow">
@@ -34,5 +36,8 @@
                 @yield('content')
             </main>
         </div>
+        
+        <!-- Custom Footer -->
+        <x-footer />
     </body>
 </html>

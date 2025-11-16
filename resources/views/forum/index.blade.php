@@ -2,6 +2,10 @@
 
 @section('title', 'Forum - Hearts Whisper')
 
+@section('styles')
+    @vite(['resources/css/forum.css', 'resources/css/navbar.css', 'resources/css/fonts.css'])
+@endsection
+
 @section('content')
     <img src="{{ asset('asset/forums/background-forum.svg') }}" alt="Homepage Background"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">

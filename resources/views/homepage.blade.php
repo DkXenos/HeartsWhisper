@@ -2,6 +2,10 @@
 
 @section('title', 'Homepage - Hearts Whisper')
 
+@section('styles')
+    @vite(['resources/css/homepage.css', 'resources/css/navbar.css', 'resources/css/fonts.css'])
+@endsection
+
 @section('content')
     <img src="{{ asset('asset/homepage/mainbg.svg') }}" alt="Homepage Background"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
