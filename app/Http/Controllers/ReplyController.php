@@ -63,8 +63,10 @@ class ReplyController extends Controller
 
     public function destroy(Reply $reply)
     {
-        // Check if user is the reply owner
-        if ($reply->user_id !== auth()->id()) {
+        $user = auth()->user();
+        
+        // Check if user is the reply owner, moderator, or admin
+        if ($reply->user_id !== $user->id && !in_array($user->role, ['moderator', 'admin'])) {
             abort(403, 'Unauthorized action.');
         }
 

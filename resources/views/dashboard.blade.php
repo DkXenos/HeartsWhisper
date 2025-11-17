@@ -11,16 +11,55 @@
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
 
     <div class="forum-container">
+        @if(session('success'))
+            <div style="background: #4CAF50; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if(session('error'))
+            <div style="background: #f44336; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if(session('info'))
+            <div style="background: #2196F3; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                {{ session('info') }}
+            </div>
+        @endif
+        
         <!-- User Stats Header -->
         <div class="forum-header">
             <div>
                 <h2>My Dashboard</h2>
-                <p class="muted">Welcome back, {{ auth()->user()->username }}!</p>
+                <p class="muted">Welcome back, {{ auth()->user()->username }}! 
+                    @if(auth()->user()->role === 'moderator')
+                        <span style="color: #4CAF50; font-weight: bold;">(Moderator)</span>
+                    @elseif(auth()->user()->role === 'admin')
+                        <span style="color: #FF5722; font-weight: bold;">(Admin)</span>
+                    @endif
+                </p>
             </div>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit" class="create-post-btn">Logout</button>
-            </form>
+            <div style="display: flex; gap: 10px;">
+                @if(auth()->user()->role === 'user')
+                    @php
+                        $pendingRequest = \App\Models\ModeratorRequest::where('user_id', auth()->id())
+                            ->where('status', 'pending')
+                            ->exists();
+                    @endphp
+                    @if(!$pendingRequest)
+                        <a href="{{ route('moderator.request') }}" class="create-post-btn" style="background: #4CAF50;">Become a Moderator</a>
+                    @else
+                        <button class="create-post-btn" style="background: #999; cursor: not-allowed;" disabled>Request Pending</button>
+                    @endif
+                @endif
+                @if(auth()->user()->role === 'admin')
+                    <a href="{{ route('admin.moderator-requests') }}" class="create-post-btn" style="background: #FF5722;">Moderator Requests</a>
+                @endif
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="create-post-btn">Logout</button>
+                </form>
+            </div>
         </div>
 
         <!-- Statistics Cards -->

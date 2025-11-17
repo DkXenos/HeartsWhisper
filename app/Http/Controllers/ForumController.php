@@ -150,8 +150,10 @@ class ForumController extends Controller
     {
         $post = Post::findOrFail($id);
         
-        // Check if user is the post owner
-        if ($post->user_id !== auth()->id()) {
+        $user = auth()->user();
+        
+        // Check if user is the post owner, moderator, or admin
+        if ($post->user_id !== $user->id && !in_array($user->role, ['moderator', 'admin'])) {
             abort(403, 'Unauthorized action.');
         }
 

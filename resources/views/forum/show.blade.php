@@ -77,6 +77,9 @@
                                 </svg>
                                 Edit
                             </a>
+                        @endif
+                        
+                        @if($post->user_id === auth()->id() || in_array(auth()->user()->role, ['moderator', 'admin']))
                             <form action="{{ route('forums.destroy', $post->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this post? This action cannot be undone.');">
                                 @csrf
                                 @method('DELETE')
