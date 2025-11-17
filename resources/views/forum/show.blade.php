@@ -3,7 +3,7 @@
 @section('title', 'Post Details - Hearts Whisper')
 
 @section('styles')
-    @vite(['resources/css/show.css', 'resources/css/navbar.css', 'resources/css/fonts.css'])
+    @vite(['resources/css/show.css', 'resources/css/navbar.css', 'resources/css/fonts.css', 'resources/js/forum.js'])
 @endsection
 
 @section('content')

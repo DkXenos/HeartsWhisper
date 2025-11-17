@@ -11,14 +11,40 @@ class ForumController extends Controller
     /**
      * Menampilkan halaman utama forum.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // 1. Mengambil data dari database
-        $posts = Post::with(['user', 'categories'])->latest()->paginate(15);
+        $query = Post::with(['user', 'categories']);
 
-        // 2. Mengirim data '$posts' ke dalam view 'forums.index'
+        // Search functionality
+        if ($request->filled('search')) {
+            $searchTerm = $request->search;
+            $query->where('content', 'like', '%' . $searchTerm . '%');
+        }
+
+        // Filter by category
+        if ($request->filled('category')) {
+            $query->whereHas('categories', function($q) use ($request) {
+                $q->where('categories.id', $request->category);
+            });
+        }
+
+        // Sort by date
+        if ($request->filled('sort')) {
+            if ($request->sort === 'oldest') {
+                $query->oldest();
+            } else if ($request->sort === 'latest') {
+                $query->latest();
+            }
+        } else {
+            $query->latest(); // Default sort
+        }
+
+        $posts = $query->paginate(15)->appends($request->except('page'));
+        $categories = Category::all();
+
         return view('forum.index', [
-            'posts' => $posts
+            'posts' => $posts,
+            'categories' => $categories
         ]);
     }
 

@@ -116,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(data => {
                 if (data.success) {
-                    alert('Reply posted successfully!');
                     textarea.value = '';
                     document.getElementById(`reply-section-${postId}`).style.display = 'none';
                     submitBtn.disabled = false;
@@ -232,9 +231,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Toggle nested reply form
     document.addEventListener('click', function(e) {
         if (e.target.closest('.nested-reply-toggle')) {
+            console.log('Reply button clicked');
             const btn = e.target.closest('.nested-reply-toggle');
             const replyId = btn.dataset.replyId;
+            console.log('Reply ID:', replyId);
             const nestedForm = document.getElementById(`nested-reply-${replyId}`);
+            console.log('Found form:', nestedForm);
+            
+            if (!nestedForm) {
+                console.error('Nested reply form not found for reply ID:', replyId);
+                return;
+            }
             
             // Hide all other nested forms
             document.querySelectorAll('.nested-reply-form').forEach(form => {
@@ -244,10 +251,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             // Toggle this form
-            if (nestedForm.style.display === 'none') {
+            if (nestedForm.style.display === 'none' || nestedForm.style.display === '') {
+                console.log('Showing form');
                 nestedForm.style.display = 'block';
                 nestedForm.querySelector('.reply-textarea-small').focus();
             } else {
+                console.log('Hiding form');
                 nestedForm.style.display = 'none';
             }
         }
@@ -284,69 +293,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Handle nested reply form submission
-    const nestedReplyForms = document.querySelectorAll('.nested-reply-form-inner');
-    
-    nestedReplyForms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const textarea = this.querySelector('.reply-textarea-small');
-            const parentId = this.dataset.parentId;
-            const postId = this.dataset.postId;
-            const submitBtn = this.querySelector('.submit-nested-reply');
-            
-            if (!textarea.value.trim()) {
-                alert('Please write a reply before submitting.');
-                return;
-            }
-            
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Posting...';
-            
-            console.log('Nested reply submitted:');
-            console.log('Post ID:', postId);
-            console.log('Parent Reply ID:', parentId);
-            console.log('Content:', textarea.value);
-            
-            // Send AJAX request to save nested reply
-            fetch(`/posts/${postId}/replies`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
-                },
-                body: JSON.stringify({
-                    content: textarea.value,
-                    parent_id: parentId
-                })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    alert('Reply posted successfully! Refreshing page...');
-                    window.location.reload();
-                } else {
-                    alert('Failed to post reply. Please try again.');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Reply';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Failed to post reply. Please try again.');
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Reply';
-            });
-        });
-    });
-    
     // Character count for main reply form on detail page
     const mainReplyTextarea = document.querySelector('.main-reply-form .reply-textarea');
     if (mainReplyTextarea) {
@@ -369,6 +315,94 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Event delegation for edit and delete reply buttons
+document.addEventListener('click', function(e) {
+    // Edit reply button
+    if (e.target.closest('.edit-reply-btn-trigger')) {
+        const btn = e.target.closest('.edit-reply-btn-trigger');
+        const replyId = btn.dataset.replyId;
+        editReply(replyId);
+    }
+    
+    // Delete reply button
+    if (e.target.closest('.delete-reply-btn-trigger')) {
+        const btn = e.target.closest('.delete-reply-btn-trigger');
+        const replyId = btn.dataset.replyId;
+        deleteReply(replyId);
+    }
+    
+    // Cancel edit button
+    if (e.target.closest('.cancel-edit-reply')) {
+        const btn = e.target.closest('.cancel-edit-reply');
+        const replyId = btn.dataset.replyId;
+        cancelEdit(replyId);
+    }
+});
+
+// Handle edit form submission
+document.addEventListener('submit', function(e) {
+    if (e.target.closest('.reply-edit-form-inner')) {
+        e.preventDefault();
+        const form = e.target.closest('.reply-edit-form-inner');
+        const replyId = form.dataset.replyId;
+        updateReply(e, replyId);
+    }
+    
+    // Handle nested reply form submission
+    if (e.target.closest('.nested-reply-form-inner')) {
+        e.preventDefault();
+        const form = e.target.closest('.nested-reply-form-inner');
+        const textarea = form.querySelector('.reply-textarea-small');
+        const parentId = form.dataset.parentId;
+        const postId = form.dataset.postId;
+        const submitBtn = form.querySelector('.submit-nested-reply');
+        
+        if (!textarea.value.trim()) {
+            alert('Please write a reply before submitting.');
+            return;
+        }
+        
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Posting...';
+        
+        // Send AJAX request to save nested reply
+        fetch(`/posts/${postId}/replies`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+            },
+            body: JSON.stringify({
+                content: textarea.value,
+                parent_id: parentId
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Nested reply response:', data);
+            if (data.success) {
+                window.location.reload();
+            } else {
+                alert('Failed to post reply. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Reply';
+            }
+        })
+        .catch(error => {
+            console.error('Nested reply error:', error);
+            alert('Failed to post reply. Please try again.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Reply';
+        });
+    }
+});
+
 // Like functionality
 function toggleLike(event, id, type) {
     event.stopPropagation();
@@ -384,12 +418,20 @@ function toggleLike(event, id, type) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
         },
         credentials: 'same-origin'
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.status);
+        }
+        return response.json();
+    })
     .then(data => {
+        console.log('Like response:', data);
+        
         // Update button state
         button.dataset.liked = data.liked;
         
@@ -421,7 +463,7 @@ function toggleLike(event, id, type) {
         }
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.error('Like error:', error);
         alert('Failed to update like. Please try again.');
     });
 }
@@ -449,30 +491,46 @@ function updateReply(event, replyId) {
     const textarea = document.getElementById(`edit-textarea-${replyId}`);
     const content = textarea.value;
     
+    if (!content.trim()) {
+        alert('Reply content cannot be empty.');
+        return;
+    }
+    
     fetch(`/replies/${replyId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
         },
         body: JSON.stringify({ content: content })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.status);
+        }
+        return response.json();
+    })
     .then(data => {
+        console.log('Update response:', data);
         if (data.success) {
             // Update the content
             const contentDiv = document.getElementById(`reply-content-${replyId}`);
-            contentDiv.querySelector('p').textContent = content;
+            if (contentDiv && contentDiv.querySelector('p')) {
+                contentDiv.querySelector('p').textContent = content;
+            }
             
             // Hide edit form and show content
             cancelEdit(replyId);
             
             // Show success message
             alert('Reply updated successfully!');
+        } else {
+            alert('Failed to update reply. Please try again.');
         }
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.error('Update error:', error);
         alert('Failed to update reply. Please try again.');
     });
 }
@@ -486,23 +544,35 @@ function deleteReply(replyId) {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.status);
+        }
+        return response.json();
+    })
     .then(data => {
+        console.log('Delete response:', data);
         if (data.success) {
-            // Remove the reply element from DOM
-            const replyElement = document.getElementById(`reply-content-${replyId}`)?.closest('.reply-item');
-            if (replyElement) {
-                replyElement.remove();
+            // Find and remove the specific reply-item div
+            const replyItem = document.querySelector(`.reply-item [id="reply-content-${replyId}"]`)?.closest('.reply-item');
+            if (replyItem) {
+                replyItem.remove();
+                alert('Reply deleted successfully!');
+            } else {
+                console.error('Could not find reply item to remove');
+                alert('Reply deleted but page needs refresh.');
+                window.location.reload();
             }
-            
-            alert('Reply deleted successfully!');
+        } else {
+            alert('Failed to delete reply. Please try again.');
         }
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.error('Delete error:', error);
         alert('Failed to delete reply. Please try again.');
     });
 }
