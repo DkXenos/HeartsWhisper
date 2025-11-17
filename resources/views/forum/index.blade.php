@@ -134,11 +134,12 @@
                                     <img src="{{ asset($post->isLikedBy(auth()->user()) ? 'asset/forums/liked.svg' : 'asset/forums/unliked.svg') }}" 
                                          alt="like" class="like-icon">
                                     <span class="like-text">{{ $post->isLikedBy(auth()->user()) ? 'Liked' : 'Like' }}</span>
+                                    <span class="like-count">({{ $post->likes_count }})</span>
                                 </button>
                             @else
                                 <a href="{{ route('login') }}" class="action-btn">
                                     <img src="{{ asset('asset/forums/unliked.svg') }}" alt="like" class="like-icon">
-                                    Like
+                                    Like ({{ $post->likes_count }})
                                 </a>
                             @endauth
                         </div>

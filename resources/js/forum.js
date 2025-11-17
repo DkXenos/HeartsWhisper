@@ -177,52 +177,75 @@ document.addEventListener('DOMContentLoaded', function() {
     const likeToggleBtns = document.querySelectorAll('.like-toggle-btn');
     
     likeToggleBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function(event) {
+            // Prevent the onclick handler from also firing if it exists
+            if (this.hasAttribute('onclick')) {
+                return; // Let the onclick handler (toggleLike) handle it
+            }
+            
             const postId = this.dataset.postId;
             const isLiked = this.dataset.liked === 'true';
             const likeIcon = this.querySelector('.like-icon');
-            const likeText = this.childNodes[2]; // The text node "Like"
+            const likeText = this.querySelector('.like-text');
+            const likeCount = this.querySelector('.like-count');
             
-            if (isLiked) {
-                // Unlike the post
-                likeIcon.src = '/asset/forums/unliked.svg';
-                likeIcon.alt = 'like';
-                this.dataset.liked = 'false';
-                this.classList.remove('liked');
-                if (likeText && likeText.nodeType === Node.TEXT_NODE) {
-                    likeText.textContent = ' Like';
+            const url = `/posts/${postId}/like`;
+            
+            // Send AJAX request to update like status in database
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                },
+                credentials: 'same-origin'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok: ' + response.status);
                 }
-            } else {
-                // Like the post
-                likeIcon.src = '/asset/forums/liked.svg';
-                likeIcon.alt = 'liked';
-                this.dataset.liked = 'true';
-                this.classList.add('liked');
-                if (likeText && likeText.nodeType === Node.TEXT_NODE) {
-                    likeText.textContent = ' Liked';
+                return response.json();
+            })
+            .then(data => {
+                console.log('Like status updated:', data);
+                
+                // Update button state
+                this.dataset.liked = data.liked;
+                
+                // Update icon
+                if (likeIcon) {
+                    likeIcon.src = data.liked ? '/asset/forums/liked.svg' : '/asset/forums/unliked.svg';
+                    likeIcon.alt = data.liked ? 'liked' : 'like';
                 }
-            }
-            
-            console.log('Post', postId, isLiked ? 'unliked' : 'liked');
-            
-            // TODO: Send AJAX request to update like status in database
-            // fetch('/api/posts/' + postId + '/like', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-            //     },
-            //     body: JSON.stringify({
-            //         liked: !isLiked
-            //     })
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     console.log('Like status updated:', data);
-            // })
-            // .catch(error => {
-            //     console.error('Error:', error);
-            // });
+                
+                // Update text
+                if (likeText) {
+                    likeText.textContent = data.liked ? 'Liked' : 'Like';
+                }
+                
+                // Update count if it exists
+                if (likeCount) {
+                    likeCount.textContent = '(' + data.likes_count + ')';
+                }
+                
+                // Update the vote count in the avatar section (forum index)
+                const voteCount = this.closest('.post-card')?.querySelector('.vote-count');
+                if (voteCount) {
+                    voteCount.textContent = data.likes_count;
+                }
+                
+                // Add/remove liked class
+                if (data.liked) {
+                    this.classList.add('liked');
+                } else {
+                    this.classList.remove('liked');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to update like. Please try again.');
+            });
         });
     });
     
@@ -403,8 +426,8 @@ document.addEventListener('submit', function(e) {
     }
 });
 
-// Like functionality
-function toggleLike(event, id, type) {
+// Like functionality - Make it globally accessible
+window.toggleLike = function(event, id, type) {
     event.stopPropagation();
     
     const button = event.currentTarget;
