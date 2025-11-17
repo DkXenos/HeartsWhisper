@@ -545,9 +545,6 @@ function updateReply(event, replyId) {
             
             // Hide edit form and show content
             cancelEdit(replyId);
-            
-            // Show success message
-            alert('Reply updated successfully!');
         } else {
             alert('Failed to update reply. Please try again.');
         }
