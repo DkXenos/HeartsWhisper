@@ -51,6 +51,12 @@
                     <p>{{ $post->content }}</p>
                 </div>
 
+                @if($post->image)
+                    <div class="post-detail-image">
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="Post image">
+                    </div>
+                @endif
+
                 <div class="post-categories">
                     @foreach ($post->categories as $category)
                         <span class="category-tag">{{ $category->name }}</span>
@@ -133,4 +139,19 @@
             @endforelse
         </div>
     </div>
+
+    <style>
+        .post-detail-image {
+            margin: 1.5rem 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(255, 105, 180, 0.2);
+        }
+
+        .post-detail-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
 @endsection

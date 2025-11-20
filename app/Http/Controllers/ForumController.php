@@ -55,13 +55,20 @@ class ForumController extends Controller
     {
         $validated = $request->validate([
             'content' => 'required|string|max:5000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'categories' => 'nullable|array',
             'categories.*' => 'exists:categories,id'
         ]);
 
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('posts', 'public');
+        }
+
         $post = Post::create([
             'user_id' => auth()->id(),
             'content' => $validated['content'],
+            'image' => $imagePath,
         ]);
 
         if ($request->has('categories')) {
@@ -125,13 +132,33 @@ class ForumController extends Controller
 
         $validated = $request->validate([
             'content' => 'required|string|max:5000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'categories' => 'nullable|array',
             'categories.*' => 'exists:categories,id'
         ]);
 
-        $post->update([
+        $updateData = [
             'content' => $validated['content'],
-        ]);
+        ];
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($post->image) {
+                \Storage::disk('public')->delete($post->image);
+            }
+            $updateData['image'] = $request->file('image')->store('posts', 'public');
+        }
+
+        // Handle image removal
+        if ($request->has('remove_image') && $request->remove_image == '1') {
+            if ($post->image) {
+                \Storage::disk('public')->delete($post->image);
+            }
+            $updateData['image'] = null;
+        }
+
+        $post->update($updateData);
 
         // Sync categories
         if ($request->has('categories')) {
@@ -155,6 +182,11 @@ class ForumController extends Controller
         // Check if user is the post owner, moderator, or admin
         if ($post->user_id !== $user->id && !in_array($user->role, ['moderator', 'admin'])) {
             abort(403, 'Unauthorized action.');
+        }
+
+        // Delete image if exists
+        if ($post->image) {
+            \Storage::disk('public')->delete($post->image);
         }
 
         $post->delete();

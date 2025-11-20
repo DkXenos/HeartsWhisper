@@ -114,6 +114,12 @@
                             <p>{{ Illuminate\Support\Str::limit($post->content, 300) }}</p>
                         </div>
 
+                        @if($post->image)
+                            <div class="post-image-container">
+                                <img src="{{ asset('storage/' . $post->image) }}" alt="Post image" class="post-image">
+                            </div>
+                        @endif
+
                         <div class="post-categories">
                             @foreach ($post->categories as $category)
                                 <span class="category-tag">{{ $category->name }}</span>
@@ -183,4 +189,26 @@
             </div>
         @endif
     </div>
+
+    <style>
+        .post-image-container {
+            margin: 1rem 0;
+            border-radius: 15px;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .post-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .post-image:hover {
+            transform: scale(1.02);
+        }
+    </style>
 @endsection
