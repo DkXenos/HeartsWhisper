@@ -10,7 +10,7 @@ class ReplyController extends Controller
 {
     public function store(Request $request, Post $post)
     {
-        $request->validate([
+        $validated = $request->validate([
             'content' => 'required|string|max:1000',
             'parent_id' => 'nullable|exists:replies,id'
         ]);
@@ -18,8 +18,8 @@ class ReplyController extends Controller
         $reply = Reply::create([
             'user_id' => auth()->id(),
             'post_id' => $post->id,
-            'parent_id' => $request->parent_id,
-            'content' => $request->content,
+            'parent_id' => $validated['parent_id'] ?? null,
+            'content' => $validated['content'],
         ]);
 
         if ($request->expectsJson()) {
@@ -41,12 +41,12 @@ class ReplyController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        $request->validate([
+        $validated = $request->validate([
             'content' => 'required|string|max:1000'
         ]);
 
         $reply->update([
-            'content' => $request->content,
+            'content' => $validated['content'],
         ]);
 
         if ($request->expectsJson()) {

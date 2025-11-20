@@ -53,7 +53,7 @@ class ForumController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'content' => 'required|string|max:5000',
             'categories' => 'nullable|array',
             'categories.*' => 'exists:categories,id'
@@ -61,7 +61,7 @@ class ForumController extends Controller
 
         $post = Post::create([
             'user_id' => auth()->id(),
-            'content' => $request->content,
+            'content' => $validated['content'],
         ]);
 
         if ($request->has('categories')) {
@@ -123,14 +123,14 @@ class ForumController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        $request->validate([
+        $validated = $request->validate([
             'content' => 'required|string|max:5000',
             'categories' => 'nullable|array',
             'categories.*' => 'exists:categories,id'
         ]);
 
         $post->update([
-            'content' => $request->content,
+            'content' => $validated['content'],
         ]);
 
         // Sync categories
