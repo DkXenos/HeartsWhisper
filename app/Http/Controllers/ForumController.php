@@ -39,7 +39,7 @@ class ForumController extends Controller
             $query->latest(); // Default sort
         }
 
-        $posts = $query->paginate(15)->appends($request->except('page'));
+        $posts = $query->paginate(perPage: 10)->appends($request->except('page'));
         $categories = Category::all();
 
         return view('forum.index', [

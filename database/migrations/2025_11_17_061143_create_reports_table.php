@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Pelapor
-            $table->morphs('reportable'); // Polymorphic: post_id/reply_id + type
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->morphs('reportable');
             $table->enum('reason', ['spam', 'harassment', 'inappropriate', 'offensive', 'other']);
             $table->text('description')->nullable();
             $table->enum('status', ['pending', 'reviewed', 'resolved', 'dismissed'])->default('pending');
-            $table->foreignId('reviewed_by')->nullable()->constrained('users')->onDelete('set null'); // Moderator/Admin
+            $table->foreignId('reviewed_by')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamp('reviewed_at')->nullable();
             $table->timestamps();
-            
-            // Prevent duplicate reports
+
             $table->unique(['user_id', 'reportable_id', 'reportable_type']);
         });
     }

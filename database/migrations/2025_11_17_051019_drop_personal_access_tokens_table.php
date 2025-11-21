@@ -19,7 +19,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Cannot restore - this is a permanent deletion
-        // If you need to restore, re-install Laravel Sanctum
+        
+        
     }
 };
