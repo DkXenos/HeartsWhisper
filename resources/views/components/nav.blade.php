@@ -25,6 +25,9 @@
             <li class="nav-item">
                 <a class="button-navbar" href="{{ url('/guides') }}">Guides</a>
             </li>
+            <li class="nav-item">
+                <a class="button-navbar" href="{{ url('/quiz') }}">Quiz</a>
+            </li>
             @guest
                 <li class="nav-item">
                     <a href="{{ route('login') }}" class="button-navbar">Login</a>
@@ -52,6 +55,9 @@
             </li>
             <li class="mobile-nav-item">
                 <a class="mobile-nav-link" href="{{ url('/guides') }}">Guides</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a class="mobile-nav-link" href="{{ url('/quiz') }}">Quiz</a>
             </li>
             @guest
                 <li class="mobile-nav-item">

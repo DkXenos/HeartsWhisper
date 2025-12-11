@@ -15,6 +15,10 @@ Route::get('/guides', function () {
     return view('guides');
 })->name('guides');
 
+Route::get('/quiz', function () {
+    return view('quiz');
+})->name('quiz');
+
 // Forum routes
 Route::get('/forums', [ForumController::class, 'index'])->name('forums.index');
 Route::get('/forums/create', function () {

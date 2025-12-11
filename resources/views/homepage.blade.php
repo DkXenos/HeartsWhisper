@@ -7,23 +7,23 @@
 @endsection
 
 @section('content')
-    <img src="{{ asset('asset/homepage/mainbg.svg') }}" alt="Homepage Background"
+    <img src="{{ asset('Asset/Homepage/mainbg.svg') }}" alt="Homepage Background"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
-            <img src="{{ asset(path: 'Asset/Components/Navbar/ribbonnew.svg') }}" alt="Hearts Whisper Logo" class="ribbon">
+            <img src="{{ asset('Asset/Components/Navbar/ribbonnew.svg') }}" alt="Hearts Whisper Logo" class="ribbon">
     <section id="hero">
         <div class="hero-root">
-            <img src="asset/homepage/pillar-left.svg" alt="" class="pillar-left">
-            <img src="asset/homepage/pillar-right.svg" alt="" class="pillar-right">
+            <img src="{{ asset('Asset/Homepage/pillar-left.svg') }}" alt="" class="pillar-left">
+            <img src="{{ asset('Asset/Homepage/pillar-right.svg') }}" alt="" class="pillar-right">
             <div class="hero-bg">
                 <div class="hero-content-1">
-                    <img src="asset/homepage/dear6.svg" alt="dear" class="dearnew">
-                    <img src="asset/homepage/textopening2.svg" alt="borderwtext" class="hero1img">
+                    <img src="{{ asset('Asset/Homepage/dear6.svg') }}" alt="dear" class="dearnew">
+                    <img src="{{ asset('Asset/Homepage/textopening2.svg') }}" alt="borderwtext" class="hero1img">
                 </div>
                 <div class="hero-content-2">
-                    <img src="asset/homepage/lettercloud2.svg" alt="dear" class="lettercloud">
+                    <img src="{{ asset('Asset/Homepage/lettercloud2.svg') }}" alt="dear" class="lettercloud">
                 </div>
                 <div class="hero-content-3">
-                    <img src="asset/homepage/coming-soon.svg" alt="coming soon" class="comingsoon">
+                    <img src="{{ asset('Asset/Homepage/coming-soon.svg') }}" alt="coming soon" class="comingsoon">
                     
                     <div class="hero-text-box">
                         <p class="hero-description">

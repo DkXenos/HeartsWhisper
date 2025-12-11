@@ -7,11 +7,11 @@
 @endsection
 
 @section('content')
-    <img src="{{ asset('asset/guide/guidebg.svg') }}" alt="Guide Background"
+    <img src="{{ asset('Asset/Guide/guidebg.svg') }}" alt="Guide Background"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
 
-    <img src="{{ asset('asset/homepage/pillar-left.svg') }}" alt="" class="pillar-left">
-    <img src="{{ asset('asset/homepage/pillar-right.svg') }}" alt="" class="pillar-right">
+    <img src="{{ asset('Asset/Homepage/pillar-left.svg') }}" alt="" class="pillar-left">
+    <img src="{{ asset('Asset/Homepage/pillar-right.svg') }}" alt="" class="pillar-right">
 
     <div class="guides-container">
         <div class="guides-header">
