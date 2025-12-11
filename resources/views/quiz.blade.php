@@ -26,9 +26,9 @@
             <div class="quiz-list-container">
                 {{-- Quiz 1: Love Language --}}
                 <div class="quiz-list-item" onclick="startQuiz('love-language')">
-                    <div class="quiz-list-icon">LL</div>
+                    <div class="quiz-list-icon">💕</div>
                     <div class="quiz-list-content">
-                        <h3 class="quiz-list-title">Love Language Quiz</h3>
+                        <h3 class="quiz-list-title">Your Language of Love</h3>
                         <p class="quiz-list-description">Temukan cara kamu memberi dan menerima kasih sayang dalam hubungan.</p>
                         <div class="quiz-list-meta">
                             <span>⏱️ 5 menit</span>
@@ -40,9 +40,9 @@
 
                 {{-- Quiz 2: Communication Style --}}
                 <div class="quiz-list-item" onclick="startQuiz('communication')">
-                    <div class="quiz-list-icon">CS</div>
+                    <div class="quiz-list-icon">💬</div>
                     <div class="quiz-list-content">
-                        <h3 class="quiz-list-title">Communication Style</h3>
+                        <h3 class="quiz-list-title">How You Express Yourself</h3>
                         <p class="quiz-list-description">Kenali gaya komunikasi kamu dalam menyampaikan pikiran dan perasaan.</p>
                         <div class="quiz-list-meta">
                             <span>⏱️ 5 menit</span>
@@ -54,9 +54,9 @@
 
                 {{-- Quiz 3: Attachment Style --}}
                 <div class="quiz-list-item" onclick="startQuiz('attachment')">
-                    <div class="quiz-list-icon">AS</div>
+                    <div class="quiz-list-icon">🤝</div>
                     <div class="quiz-list-content">
-                        <h3 class="quiz-list-title">Attachment Style</h3>
+                        <h3 class="quiz-list-title">Your Bonding Pattern</h3>
                         <p class="quiz-list-description">Pelajari pola ikatan emosional kamu dalam menjalin hubungan.</p>
                         <div class="quiz-list-meta">
                             <span>⏱️ 6 menit</span>
@@ -68,9 +68,9 @@
 
                 {{-- Quiz 4: Conflict Resolution --}}
                 <div class="quiz-list-item" onclick="startQuiz('conflict')">
-                    <div class="quiz-list-icon">CR</div>
+                    <div class="quiz-list-icon">🕊️</div>
                     <div class="quiz-list-content">
-                        <h3 class="quiz-list-title">Conflict Resolution</h3>
+                        <h3 class="quiz-list-title">Your Conflict Navigator</h3>
                         <p class="quiz-list-description">Ketahui cara kamu mengatasi konflik dan tantangan dalam hubungan.</p>
                         <div class="quiz-list-meta">
                             <span>⏱️ 5 menit</span>

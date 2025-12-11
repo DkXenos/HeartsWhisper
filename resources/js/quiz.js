@@ -17,27 +17,27 @@ const quizData = {
         results: {
             'quality-time': {
                 title: 'Quality Time',
-                icon: 'QT',
+                icon: '⏰',
                 description: 'Love language utama kamu adalah Quality Time. Kamu merasa paling dicintai ketika seseorang memberikan perhatian penuh dan menghabiskan waktu berkualitas bersamamu.'
             },
             'words': {
                 title: 'Words of Affirmation',
-                icon: 'WA',
+                icon: '💬',
                 description: 'Love language utama kamu adalah Words of Affirmation. Kata-kata pujian, dorongan, dan afirmasi sangat berarti dan membuat kamu merasa dicintai.'
             },
             'physical': {
                 title: 'Physical Touch',
-                icon: 'PT',
+                icon: '🤗',
                 description: 'Love language utama kamu adalah Physical Touch. Sentuhan fisik seperti pelukan, pegangan tangan, dan kedekatan membuat kamu merasa terhubung dan dicintai.'
             },
             'gifts': {
                 title: 'Receiving Gifts',
-                icon: 'RG',
+                icon: '🎁',
                 description: 'Love language utama kamu adalah Receiving Gifts. Hadiah yang thoughtful dan bermakna membuat kamu merasa diperhatikan dan dicintai.'
             },
             'service': {
                 title: 'Acts of Service',
-                icon: 'AoS',
+                icon: '🤝',
                 description: 'Love language utama kamu adalah Acts of Service. Tindakan membantu dan melakukan sesuatu untukmu menunjukkan kasih sayang yang nyata.'
             }
         }
@@ -59,22 +59,22 @@ const quizData = {
         results: {
             'assertive': {
                 title: 'Assertive Communicator',
-                icon: 'AC',
+                icon: '✨',
                 description: 'Kamu adalah komunikator yang asertif! Kamu bisa mengekspresikan perasaan dan kebutuhan dengan jelas, sambil tetap menghormati orang lain. Ini adalah gaya komunikasi yang paling sehat.'
             },
             'passive': {
                 title: 'Passive Communicator',
-                icon: 'PC',
+                icon: '🤐',
                 description: 'Kamu cenderung pasif dalam komunikasi. Kamu sering menghindari konflik dan menyembunyikan perasaan. Cobalah untuk lebih berani mengekspresikan kebutuhan dan pendapatmu.'
             },
             'passive-aggressive': {
                 title: 'Passive-Aggressive Communicator',
-                icon: 'PA',
+                icon: '😤',
                 description: 'Kamu menunjukkan gaya komunikasi pasif-agresif. Kamu kesulitan mengekspresikan kekesalan secara langsung. Latih diri untuk lebih terbuka dan honest tentang perasaanmu.'
             },
             'aggressive': {
                 title: 'Aggressive Communicator',
-                icon: 'AG',
+                icon: '⚡',
                 description: 'Kamu cenderung agresif dalam komunikasi. Kamu tegas tapi kadang terlalu dominan. Cobalah untuk lebih mendengarkan dan mempertimbangkan perasaan orang lain.'
             }
         }
@@ -98,17 +98,17 @@ const quizData = {
         results: {
             'secure': {
                 title: 'Secure Attachment',
-                icon: 'SA',
+                icon: '💚',
                 description: 'Kamu memiliki secure attachment style! Kamu nyaman dengan keintiman, percaya pada orang lain, dan bisa memberikan dan menerima cinta dengan sehat. Pertahankan pola ini!'
             },
             'anxious': {
                 title: 'Anxious Attachment',
-                icon: 'AnA',
+                icon: '💭',
                 description: 'Kamu menunjukkan anxious attachment style. Kamu sangat peduli dengan hubungan tapi sering merasa cemas dan butuh reassurance. Focus pada membangun self-worth dan trust.'
             },
             'avoidant': {
                 title: 'Avoidant Attachment',
-                icon: 'AvA',
+                icon: '🛡️',
                 description: 'Kamu cenderung memiliki avoidant attachment style. Kamu menghargai kemandirian tapi kadang kesulitan dengan keintiman emosional. Cobalah untuk lebih terbuka dan vulnerable.'
             }
         }
@@ -130,22 +130,22 @@ const quizData = {
         results: {
             'collaborative': {
                 title: 'Collaborative Problem Solver',
-                icon: 'CP',
+                icon: '🤝',
                 description: 'Kamu adalah collaborative problem solver! Kamu mencari solusi win-win dan mempertimbangkan kebutuhan semua pihak. Ini adalah cara paling sehat untuk mengatasi konflik.'
             },
             'accommodating': {
                 title: 'Accommodating Peacemaker',
-                icon: 'AP',
+                icon: '🕊️',
                 description: 'Kamu cenderung accommodating dalam konflik. Kamu menghargai harmony tapi sering mengorbankan kebutuhanmu sendiri. Ingat bahwa kebutuhanmu juga penting dan valid.'
             },
             'avoiding': {
                 title: 'Conflict Avoider',
-                icon: 'CA',
+                icon: '🙈',
                 description: 'Kamu cenderung menghindari konflik. Ini mungkin terasa aman jangka pendek, tapi masalah yang tidak diselesaikan bisa menumpuk. Cobalah untuk lebih proaktif dalam mengatasi isu.'
             },
             'competing': {
                 title: 'Competitive Debater',
-                icon: 'CD',
+                icon: '⚔️',
                 description: 'Kamu kompetitif dalam konflik dan fokus untuk menang. Kamu tegas tapi perlu ingat bahwa hubungan bukan tentang siapa yang benar. Dengarkan juga sudut pandang orang lain.'
             }
         }

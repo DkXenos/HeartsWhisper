@@ -115,7 +115,7 @@
     transform: translateY(-5px);
     border-color: #ffb5d7;
     box-shadow: 0 8px 25px rgba(205, 244, 254, 0.4);
-    background: #fffdf5;
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .quiz-list-icon {
@@ -126,11 +126,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #ffb5d7, #b2d5f1);
+    background: transparent;
     border-radius: 50%;
-    color: white;
-    font-family: 'Comfortaa', sans-serif;
-    font-weight: bold;
 }
 
 .quiz-list-content {
@@ -186,7 +183,7 @@
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #ffb5d7, #b2d5f1);
+    background: #ffb5d7;
     transition: width 0.4s ease;
     width: 0%;
 }
@@ -294,9 +291,9 @@
 }
 
 .scale-btn.selected {
-    background: linear-gradient(135deg, #ffb5d7, #b2d5f1);
+    background: #ffb5d7;
     color: white;
-    border-color: #b2d5f1;
+    border-color: #ffb5d7;
     transform: scale(1.15);
 }
 
@@ -335,13 +332,13 @@
 }
 
 .nav-btn-primary {
-    background: linear-gradient(90deg, #ffb5d7, #b2d5f1);
+    background: #ffb5d7;
     color: white;
     border: none;
 }
 
 .nav-btn-primary:not(:disabled):hover {
-    background: linear-gradient(90deg, #ff9ac5, #9bc4e8);
+    background: #ff9ac5;
     box-shadow: 0 5px 15px rgba(255, 181, 215, 0.4);
 }
 
@@ -366,7 +363,7 @@
 .result-icon {
     font-size: 6rem;
     animation: scaleIn 0.5s ease;
-    color: #ffb5d7;
+    margin: 0 auto 20px;
 }
 
 @keyframes scaleIn {
@@ -436,7 +433,7 @@
 
 .score-fill {
     height: 100%;
-    background: linear-gradient(90deg, #ffb5d7, #b2d5f1);
+    background: #ffb5d7;
     transition: width 1s ease;
     display: flex;
     align-items: center;
@@ -516,14 +513,6 @@
 
 .category-icon {
     font-size: 1.5rem;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #ffb5d7, #b2d5f1);
-    border-radius: 50%;
-    color: white;
 }
 
 .category-name {
@@ -549,7 +538,7 @@
 
 .category-fill {
     height: 100%;
-    background: linear-gradient(90deg, #ffb5d7, #b2d5f1);
+    background: #ffb5d7;
     border-radius: 10px;
     transition: width 0.5s ease;
 }
@@ -610,7 +599,7 @@
 }
 
 .result-btn-primary {
-    background: linear-gradient(90deg, #ffb5d7, #b2d5f1);
+    background: #ffb5d7;
     color: white;
     border: none;
 }
