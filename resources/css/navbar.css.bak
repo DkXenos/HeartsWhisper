@@ -1,23 +1,32 @@
 .button-navbar {
     cursor: pointer;
-    border: 4px solid #fffdf5;
+    border: 4px solid transparent;
     padding: 0.5rem 1rem;
     text-decoration: none;
-    color: white;
+    color: #333;
     font-weight: bold;
-    background: #ffb5d7;
-    transition: background 300ms;
+    --button-left-gradient: #ffb5d7;
+    --button-right-gradient: #ffb5d7;
+    --button-left-border: #fffdf5;
+    --button-right-border: #fffdf5;
+    background-image: #ffb5d7, #fffdf5;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: --button-left-gradient 300ms, --button-right-gradient 300ms;
     border-radius: 2rem;
     font: bold;
+    color: white;
 }
 
 .button-navbar:hover,
 .button-navbar:focus {
-    background: #b2d5f1;
+    --button-left-gradient: #b2d5f1;
+    --button-right-gradient: #b2d5f1;
 }
 
 .button-navbar.button-navbar-selected {
-    background: #75abdc;
+    --button-left-gradient: #b2d5f1;
+    --button-right-gradient: #b2d5f1;
 }
 
 .button-navbar.disabled {
@@ -30,10 +39,18 @@
 
 .navbar {
     text-decoration: none;
-    color: white;
+    color: #333;
     font-weight: bold;
+    --button-left-gradient: #cdf4fe;
+    --button-right-gradient: #94b1ee;
+    --button-left-border: #f2b028;
+    --button-right-border: #fff0b8;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: --button-left-gradient 300ms, --button-right-gradient 300ms;
     font-size: 1.5rem;
     font: bold;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -107,7 +124,7 @@
     align-items: center;
     width: 40px;
     height: 40px;
-    background: #ffb5d7;
+    background: linear-gradient(135deg, #ffb5d7, #b2d5f1);
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -119,8 +136,7 @@
 }
 
 .hamburger-menu:hover {
-    background: #ff9ec9;
-}
+        background: #ff9ec9;
 
 .hamburger-line {
     width: 24px;
@@ -151,7 +167,7 @@
     left: 0;
     width: 100%;
     height: 0;
-    background: #ffb5d7;
+    background: linear-gradient(180deg, #ffb5d7 0%, #b2d5f1 100%);
     overflow: hidden;
     transition: height 0.3s ease;
     z-index: 90;
@@ -193,7 +209,7 @@
 
 .mobile-nav-link:hover,
 .mobile-nav-link:active {
-    background: #75abdc;
+    background: #b2d5f1;
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -299,7 +315,7 @@
         align-items: center;
         width: 40px;
         height: 40px;
-        background: #ffb5d7;
+        background: linear-gradient(135deg, #ffb5d87c, #ffb5d87c);
         border: none;
         border-radius: 8px;
         cursor: pointer;
@@ -311,7 +327,7 @@
     }
 
     .hamburger-menu:hover {
-        background: #ffb5d7;
+        background: linear-gradient(135deg, #ffb5d87c, #ffb5d87c);
     }
 
     .hamburger-line {
@@ -412,7 +428,7 @@
         align-items: center;
         width: 40px;
         height: 40px;
-        background: #ffb5d7;
+        background: linear-gradient(135deg, #ffb5d87c, #ffb5d87c);
         border: none;
         border-radius: 8px;
         cursor: pointer;
@@ -424,7 +440,7 @@
     }
 
     .hamburger-menu:hover {
-        background: #ffb5d7;
+        background: linear-gradient(135deg, #ffb5d87c, #ffb5d87c);
     }
 
     .hamburger-line {
@@ -545,7 +561,7 @@
         align-items: center;
         width: 40px;
         height: 40px;
-        background: #ffb5d7;
+        background: linear-gradient(135deg, #ffb5d87c, #ffb5d87c);
         border: none;
         border-radius: 8px;
         cursor: pointer;
@@ -557,7 +573,7 @@
     }
 
     .hamburger-menu:hover {
-        background: #ffb5d7;
+        background: linear-gradient(135deg, #ffb5d87c, #ffb5d87c);
     }
 
     .hamburger-line {
@@ -641,7 +657,7 @@
 
     .mobile-nav-link:hover,
     .mobile-nav-link:active {
-        background: #ffb5d7;
+        background: linear-gradient(90deg, #75abdc, #b2d5f1);
         color: white;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -706,7 +722,7 @@
         left: 0;
         width: 100%;
         height: 0;
-        background: #ffb5d7;
+        background: linear-gradient(180deg, #ffb5d800 0%, #ffb5d800 100%);
         overflow: hidden;
         transition: height 0.3s ease;
         z-index: 90;
@@ -715,7 +731,7 @@
 
     .mobile-menu.active {
         height: 100vh;
-        background: #ffb5d7;
+        background: linear-gradient(180deg, #ffb5d887 0%, #ffb5d887 100%);
     }
 
     .mobile-nav-list {
@@ -748,7 +764,7 @@
 
     .mobile-nav-link:hover,
     .mobile-nav-link:active {
-        background: #ffb5d7;
+        background: linear-gradient(90deg, #75abdc, #b2d5f1);
         color: white;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -808,7 +824,7 @@
         left: 0;
         width: 100%;
         height: 0;
-        background: #ffb5d7;
+        background: linear-gradient(180deg, #ffb5d800 0%, #ffb5d800 100%);
         overflow: hidden;
         transition: height 0.3s ease;
         z-index: 90;
@@ -817,7 +833,7 @@
 
     .mobile-menu.active {
         height: 100vh;
-        background: #ffb5d7;
+        background: linear-gradient(180deg, #ffb5d887 0%, #ffb5d887 100%);
     }
 
     .mobile-nav-list {
@@ -850,7 +866,7 @@
 
     .mobile-nav-link:hover,
     .mobile-nav-link:active {
-        background: #ffb5d7;
+        background: linear-gradient(90deg, #75abdc, #b2d5f1);
         color: white;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -914,7 +930,7 @@
         left: 0;
         width: 100%;
         height: 0;
-        background: #ffb5d7;
+        background: linear-gradient(180deg, #ffb5d800 0%, #ffb5d800 100%);
         overflow: hidden;
         transition: height 0.3s ease;
         z-index: 90;
@@ -923,7 +939,7 @@
 
     .mobile-menu.active {
         height: 100vh;
-        background: #ffb5d7;
+        background: linear-gradient(180deg, #ffb5d887 0%, #ffb5d887 100%);
     }
 
     .mobile-nav-list {
@@ -956,7 +972,7 @@
 
     .mobile-nav-link:hover,
     .mobile-nav-link:active {
-        background: #ffb5d7;
+        background: linear-gradient(90deg, #75abdc, #b2d5f1);
         color: white;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

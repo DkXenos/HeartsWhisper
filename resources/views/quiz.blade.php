@@ -20,7 +20,7 @@
             
             <div class="quiz-header">
                 <h1 class="quiz-title">Discover Your Relationship Style</h1>
-                <p class="quiz-subtitle">Pilih quiz untuk mengetahui lebih dalam tentang diri dan hubunganmu</p>
+                <p class="quiz-subtitle">Choose a quiz to learn more about yourself and your relationships</p>
             </div>
 
             <div class="quiz-list-container">
@@ -29,10 +29,10 @@
                     <div class="quiz-list-icon">💕</div>
                     <div class="quiz-list-content">
                         <h3 class="quiz-list-title">Your Language of Love</h3>
-                        <p class="quiz-list-description">Temukan cara kamu memberi dan menerima kasih sayang dalam hubungan.</p>
+                        <p class="quiz-list-description">Discover how you give and receive affection in relationships.</p>
                         <div class="quiz-list-meta">
-                            <span>⏱️ 5 menit</span>
-                            <span>📋 10 pertanyaan</span>
+                            <span>⏱️ 5 minutes</span>
+                            <span>📋 10 questions</span>
                         </div>
                     </div>
                     <div class="quiz-list-arrow">→</div>
@@ -43,10 +43,10 @@
                     <div class="quiz-list-icon">💬</div>
                     <div class="quiz-list-content">
                         <h3 class="quiz-list-title">How You Express Yourself</h3>
-                        <p class="quiz-list-description">Kenali gaya komunikasi kamu dalam menyampaikan pikiran dan perasaan.</p>
+                        <p class="quiz-list-description">Recognize your communication style in expressing thoughts and feelings.</p>
                         <div class="quiz-list-meta">
-                            <span>⏱️ 5 menit</span>
-                            <span>📋 10 pertanyaan</span>
+                            <span>⏱️ 5 minutes</span>
+                            <span>📋 10 questions</span>
                         </div>
                     </div>
                     <div class="quiz-list-arrow">→</div>
@@ -57,10 +57,10 @@
                     <div class="quiz-list-icon">🤝</div>
                     <div class="quiz-list-content">
                         <h3 class="quiz-list-title">Your Bonding Pattern</h3>
-                        <p class="quiz-list-description">Pelajari pola ikatan emosional kamu dalam menjalin hubungan.</p>
+                        <p class="quiz-list-description">Learn about your emotional attachment patterns in relationships.</p>
                         <div class="quiz-list-meta">
-                            <span>⏱️ 6 menit</span>
-                            <span>📋 12 pertanyaan</span>
+                            <span>⏱️ 6 minutes</span>
+                            <span>📋 12 questions</span>
                         </div>
                     </div>
                     <div class="quiz-list-arrow">→</div>
@@ -71,10 +71,10 @@
                     <div class="quiz-list-icon">🕊️</div>
                     <div class="quiz-list-content">
                         <h3 class="quiz-list-title">Your Conflict Navigator</h3>
-                        <p class="quiz-list-description">Ketahui cara kamu mengatasi konflik dan tantangan dalam hubungan.</p>
+                        <p class="quiz-list-description">Discover how you handle conflicts and challenges in relationships.</p>
                         <div class="quiz-list-meta">
-                            <span>⏱️ 5 menit</span>
-                            <span>📋 10 pertanyaan</span>
+                            <span>⏱️ 5 minutes</span>
+                            <span>📋 10 questions</span>
                         </div>
                     </div>
                     <div class="quiz-list-arrow">→</div>
@@ -95,17 +95,17 @@
             
             <div class="quiz-content">
                 <div class="quiz-question-header">
-                    <span id="question-number">Pertanyaan 1 dari 10</span>
-                    <button onclick="exitQuiz()" class="exit-quiz-btn">✕ Keluar</button>
+                    <span id="question-number">Question 1 of 10</span>
+                    <button onclick="exitQuiz()" class="exit-quiz-btn">✕ Exit</button>
                 </div>
                 
                 <h2 class="quiz-question-text" id="question-text">
-                    Loading pertanyaan...
+                    Loading question...
                 </h2>
                 
                 <div class="quiz-options">
                     <div class="option-scale">
-                        <span class="scale-label-left">Sangat Tidak Setuju</span>
+                        <span class="scale-label-left">Strongly Disagree</span>
                         <div class="scale-buttons">
                             <button class="scale-btn" data-value="1" onclick="selectAnswer(1)">1</button>
                             <button class="scale-btn" data-value="2" onclick="selectAnswer(2)">2</button>
@@ -113,16 +113,16 @@
                             <button class="scale-btn" data-value="4" onclick="selectAnswer(4)">4</button>
                             <button class="scale-btn" data-value="5" onclick="selectAnswer(5)">5</button>
                         </div>
-                        <span class="scale-label-right">Sangat Setuju</span>
+                        <span class="scale-label-right">Strongly Agree</span>
                     </div>
                 </div>
                 
                 <div class="quiz-navigation">
                     <button id="prev-btn" onclick="previousQuestion()" class="nav-btn" disabled>
-                        ← Sebelumnya
+                        ← Previous
                     </button>
                     <button id="next-btn" onclick="nextQuestion()" class="nav-btn nav-btn-primary" disabled>
-                        Selanjutnya →
+                        Next →
                     </button>
                 </div>
             </div>
@@ -137,13 +137,13 @@
             
             <div class="result-content">
                 <div class="result-header">
-                    <h1>Hasil Quiz Kamu</h1>
+                    <h1>Your Quiz Results</h1>
                     <div class="result-icon" id="result-icon"></div>
                 </div>
                 
                 <div class="result-card">
-                    <h2 id="result-title">Tipe Hasil Kamu</h2>
-                    <p id="result-description">Deskripsi akan muncul di sini...</p>
+                    <h2 id="result-title">Your Result Type</h2>
+                    <p id="result-description">Description will appear here...</p>
                     
                     <div class="result-details" id="result-details">
                         <!-- Details will be inserted here -->
@@ -152,10 +152,10 @@
                 
                 <div class="result-actions">
                     <button onclick="retakeQuiz()" class="result-btn result-btn-secondary">
-                        Ulangi Quiz
+                        Retake Quiz
                     </button>
                     <button onclick="backToSelection()" class="result-btn result-btn-primary">
-                        Kembali ke Daftar Quiz
+                        Back to Quiz List
                     </button>
                 </div>
             </div>

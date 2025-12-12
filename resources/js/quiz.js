@@ -3,150 +3,150 @@ const quizData = {
     'love-language': {
         title: 'Love Language Quiz',
         questions: [
-            { text: 'Saya merasa paling dicintai ketika pasangan menghabiskan waktu berkualitas bersama saya', category: 'quality-time' },
-            { text: 'Kata-kata pujian dan afirmasi dari pasangan sangat berarti bagi saya', category: 'words' },
-            { text: 'Sentuhan fisik seperti pelukan atau pegangan tangan membuat saya merasa terhubung', category: 'physical' },
-            { text: 'Hadiah dari pasangan, meskipun kecil, membuat saya merasa istimewa', category: 'gifts' },
-            { text: 'Saya merasa dicintai ketika pasangan membantu saya dengan pekerjaan atau tugas', category: 'service' },
-            { text: 'Waktu berdua tanpa gangguan lebih penting daripada hal lainnya', category: 'quality-time' },
-            { text: 'Saya suka mendengar "Aku mencintaimu" dan kata-kata manis lainnya', category: 'words' },
-            { text: 'Kedekatan fisik membuat saya merasa aman dalam hubungan', category: 'physical' },
-            { text: 'Saya sangat menghargai hadiah yang thoughtful dan bermakna', category: 'gifts' },
-            { text: 'Tindakan kecil seperti membuatkan kopi menunjukkan kasih sayang', category: 'service' }
+            { text: 'I feel most loved when my partner spends quality time with me', category: 'quality-time' },
+            { text: 'Words of praise and affirmation from my partner mean a lot to me', category: 'words' },
+            { text: 'Physical touch like hugs or holding hands makes me feel connected', category: 'physical' },
+            { text: 'Gifts from my partner, even small ones, make me feel special', category: 'gifts' },
+            { text: 'I feel loved when my partner helps me with work or tasks', category: 'service' },
+            { text: 'Time together without distractions is more important than anything else', category: 'quality-time' },
+            { text: 'I love hearing "I love you" and other sweet words', category: 'words' },
+            { text: 'Physical closeness makes me feel safe in a relationship', category: 'physical' },
+            { text: 'I deeply appreciate thoughtful and meaningful gifts', category: 'gifts' },
+            { text: 'Small acts like making me coffee show love', category: 'service' }
         ],
         results: {
             'quality-time': {
                 title: 'Quality Time',
                 icon: '⏰',
-                description: 'Love language utama kamu adalah Quality Time. Kamu merasa paling dicintai ketika seseorang memberikan perhatian penuh dan menghabiskan waktu berkualitas bersamamu.'
+                description: 'Your primary love language is Quality Time. You feel most loved when someone gives you their full attention and spends quality time with you.'
             },
             'words': {
                 title: 'Words of Affirmation',
                 icon: '💬',
-                description: 'Love language utama kamu adalah Words of Affirmation. Kata-kata pujian, dorongan, dan afirmasi sangat berarti dan membuat kamu merasa dicintai.'
+                description: 'Your primary love language is Words of Affirmation. Words of praise, encouragement, and affirmation mean a lot and make you feel loved.'
             },
             'physical': {
                 title: 'Physical Touch',
                 icon: '🤗',
-                description: 'Love language utama kamu adalah Physical Touch. Sentuhan fisik seperti pelukan, pegangan tangan, dan kedekatan membuat kamu merasa terhubung dan dicintai.'
+                description: 'Your primary love language is Physical Touch. Physical touch like hugs, holding hands, and closeness make you feel connected and loved.'
             },
             'gifts': {
                 title: 'Receiving Gifts',
                 icon: '🎁',
-                description: 'Love language utama kamu adalah Receiving Gifts. Hadiah yang thoughtful dan bermakna membuat kamu merasa diperhatikan dan dicintai.'
+                description: 'Your primary love language is Receiving Gifts. Thoughtful and meaningful gifts make you feel cared for and loved.'
             },
             'service': {
                 title: 'Acts of Service',
                 icon: '🤝',
-                description: 'Love language utama kamu adalah Acts of Service. Tindakan membantu dan melakukan sesuatu untukmu menunjukkan kasih sayang yang nyata.'
+                description: 'Your primary love language is Acts of Service. Helpful actions and doing things for you show real love and affection.'
             }
         }
     },
     'communication': {
         title: 'Communication Style',
         questions: [
-            { text: 'Ketika ada masalah, saya langsung mengatakannya dengan terus terang', category: 'assertive' },
-            { text: 'Saya sering menghindari konflik dan lebih memilih diam', category: 'passive' },
-            { text: 'Ketika marah, saya cenderung menyindir atau berbicara dengan nada sarkastik', category: 'passive-aggressive' },
-            { text: 'Saya sering memaksakan pendapat saya tanpa mendengar orang lain', category: 'aggressive' },
-            { text: 'Saya bisa mengekspresikan perasaan dengan jelas tanpa menyerang orang lain', category: 'assertive' },
-            { text: 'Saya sering mengalah meskipun sebenarnya tidak setuju', category: 'passive' },
-            { text: 'Saya sulit mengekspresikan kekesalan secara langsung', category: 'passive-aggressive' },
-            { text: 'Saya cenderung mengkritik dan menyalahkan orang lain saat ada masalah', category: 'aggressive' },
-            { text: 'Saya bisa mendengarkan perspektif orang lain dengan empati', category: 'assertive' },
-            { text: 'Saya lebih suka menghindari pembicaraan yang uncomfortable', category: 'passive' }
+            { text: 'When there is a problem, I say it directly and frankly', category: 'assertive' },
+            { text: 'I often avoid conflict and prefer to stay silent', category: 'passive' },
+            { text: 'When angry, I tend to be sarcastic or speak in a sarcastic tone', category: 'passive-aggressive' },
+            { text: 'I often force my opinion without listening to others', category: 'aggressive' },
+            { text: 'I can express my feelings clearly without attacking others', category: 'assertive' },
+            { text: 'I often give in even though I actually disagree', category: 'passive' },
+            { text: 'I have difficulty expressing annoyance directly', category: 'passive-aggressive' },
+            { text: 'I tend to criticize and blame others when there is a problem', category: 'aggressive' },
+            { text: 'I can listen to other people\'s perspectives with empathy', category: 'assertive' },
+            { text: 'I prefer to avoid uncomfortable conversations', category: 'passive' }
         ],
         results: {
             'assertive': {
                 title: 'Assertive Communicator',
                 icon: '✨',
-                description: 'Kamu adalah komunikator yang asertif! Kamu bisa mengekspresikan perasaan dan kebutuhan dengan jelas, sambil tetap menghormati orang lain. Ini adalah gaya komunikasi yang paling sehat.'
+                description: 'You are an assertive communicator! You can express your feelings and needs clearly while still respecting others. This is the healthiest communication style.'
             },
             'passive': {
                 title: 'Passive Communicator',
                 icon: '🤐',
-                description: 'Kamu cenderung pasif dalam komunikasi. Kamu sering menghindari konflik dan menyembunyikan perasaan. Cobalah untuk lebih berani mengekspresikan kebutuhan dan pendapatmu.'
+                description: 'You tend to be passive in communication. You often avoid conflict and hide your feelings. Try to be braver in expressing your needs and opinions.'
             },
             'passive-aggressive': {
                 title: 'Passive-Aggressive Communicator',
                 icon: '😤',
-                description: 'Kamu menunjukkan gaya komunikasi pasif-agresif. Kamu kesulitan mengekspresikan kekesalan secara langsung. Latih diri untuk lebih terbuka dan honest tentang perasaanmu.'
+                description: 'You show a passive-aggressive communication style. You have difficulty expressing annoyance directly. Train yourself to be more open and honest about your feelings.'
             },
             'aggressive': {
                 title: 'Aggressive Communicator',
                 icon: '⚡',
-                description: 'Kamu cenderung agresif dalam komunikasi. Kamu tegas tapi kadang terlalu dominan. Cobalah untuk lebih mendengarkan dan mempertimbangkan perasaan orang lain.'
+                description: 'You tend to be aggressive in communication. You are firm but sometimes too dominant. Try to listen more and consider other people\'s feelings.'
             }
         }
     },
     'attachment': {
         title: 'Attachment Style',
         questions: [
-            { text: 'Saya merasa nyaman dengan keintiman emosional dalam hubungan', category: 'secure' },
-            { text: 'Saya sering khawatir pasangan tidak benar-benar mencintai saya', category: 'anxious' },
-            { text: 'Saya merasa tidak nyaman ketika orang lain terlalu dekat secara emosional', category: 'avoidant' },
-            { text: 'Saya mudah percaya pada orang lain dalam hubungan', category: 'secure' },
-            { text: 'Saya butuh banyak reassurance dari pasangan bahwa saya dicintai', category: 'anxious' },
-            { text: 'Saya lebih suka menjaga jarak emosional untuk melindungi diri', category: 'avoidant' },
-            { text: 'Saya tidak takut untuk vulnerable dengan orang yang saya percaya', category: 'secure' },
-            { text: 'Saya sering cemas ketika pasangan tidak segera membalas pesan', category: 'anxious' },
-            { text: 'Saya merasa terbebani ketika orang lain bergantung pada saya', category: 'avoidant' },
-            { text: 'Saya bisa memberi dan menerima cinta dengan seimbang', category: 'secure' },
-            { text: 'Saya takut ditinggalkan atau diabaikan oleh orang yang saya sayangi', category: 'anxious' },
-            { text: 'Saya lebih nyaman menyelesaikan masalah sendiri daripada meminta bantuan', category: 'avoidant' }
+            { text: 'I feel comfortable with emotional intimacy in relationships', category: 'secure' },
+            { text: 'I often worry that my partner doesn\'t really love me', category: 'anxious' },
+            { text: 'I feel uncomfortable when others get too close emotionally', category: 'avoidant' },
+            { text: 'I easily trust others in relationships', category: 'secure' },
+            { text: 'I need a lot of reassurance from my partner that I am loved', category: 'anxious' },
+            { text: 'I prefer to keep an emotional distance to protect myself', category: 'avoidant' },
+            { text: 'I am not afraid to be vulnerable with people I trust', category: 'secure' },
+            { text: 'I often feel anxious when my partner doesn\'t reply to messages immediately', category: 'anxious' },
+            { text: 'I feel burdened when others depend on me', category: 'avoidant' },
+            { text: 'I can give and receive love in a balanced way', category: 'secure' },
+            { text: 'I am afraid of being abandoned or ignored by people I care about', category: 'anxious' },
+            { text: 'I am more comfortable solving problems alone than asking for help', category: 'avoidant' }
         ],
         results: {
             'secure': {
                 title: 'Secure Attachment',
                 icon: '💚',
-                description: 'Kamu memiliki secure attachment style! Kamu nyaman dengan keintiman, percaya pada orang lain, dan bisa memberikan dan menerima cinta dengan sehat. Pertahankan pola ini!'
+                description: 'You have a secure attachment style! You are comfortable with intimacy, trust others, and can give and receive love in a healthy way. Maintain this pattern!'
             },
             'anxious': {
                 title: 'Anxious Attachment',
                 icon: '💭',
-                description: 'Kamu menunjukkan anxious attachment style. Kamu sangat peduli dengan hubungan tapi sering merasa cemas dan butuh reassurance. Focus pada membangun self-worth dan trust.'
+                description: 'You show an anxious attachment style. You care deeply about relationships but often feel anxious and need reassurance. Focus on building self-worth and trust.'
             },
             'avoidant': {
                 title: 'Avoidant Attachment',
                 icon: '🛡️',
-                description: 'Kamu cenderung memiliki avoidant attachment style. Kamu menghargai kemandirian tapi kadang kesulitan dengan keintiman emosional. Cobalah untuk lebih terbuka dan vulnerable.'
+                description: 'You tend to have an avoidant attachment style. You value independence but sometimes struggle with emotional intimacy. Try to be more open and vulnerable.'
             }
         }
     },
     'conflict': {
         title: 'Conflict Resolution',
         questions: [
-            { text: 'Ketika ada konflik, saya mencoba memahami perspektif kedua belah pihak', category: 'collaborative' },
-            { text: 'Saya cenderung mengalah untuk menghindari pertengkaran', category: 'accommodating' },
-            { text: 'Saya lebih suka menghindari konflik dan pura-pura tidak ada masalah', category: 'avoiding' },
-            { text: 'Ketika berargumen, saya fokus untuk "menang" dalam diskusi', category: 'competing' },
-            { text: 'Saya mencari solusi win-win yang memuaskan semua pihak', category: 'collaborative' },
-            { text: 'Saya sering mengorbankan kebutuhan saya demi kebahagiaan orang lain', category: 'accommodating' },
-            { text: 'Saya butuh waktu untuk cool down sebelum membahas masalah', category: 'avoiding' },
-            { text: 'Saya percaya pendapat saya yang paling benar dalam konflik', category: 'competing' },
-            { text: 'Saya terbuka untuk kompromi dan mencari jalan tengah', category: 'collaborative' },
-            { text: 'Harmony dalam hubungan lebih penting daripada memperjuangkan keinginan saya', category: 'accommodating' }
+            { text: 'When there is a conflict, I try to understand both sides\' perspectives', category: 'collaborative' },
+            { text: 'I tend to give in to avoid arguments', category: 'accommodating' },
+            { text: 'I prefer to avoid conflict and pretend there is no problem', category: 'avoiding' },
+            { text: 'When arguing, I focus on "winning" the discussion', category: 'competing' },
+            { text: 'I look for win-win solutions that satisfy all parties', category: 'collaborative' },
+            { text: 'I often sacrifice my needs for the happiness of others', category: 'accommodating' },
+            { text: 'I need time to cool down before discussing problems', category: 'avoiding' },
+            { text: 'I believe my opinion is the most correct in a conflict', category: 'competing' },
+            { text: 'I am open to compromise and finding middle ground', category: 'collaborative' },
+            { text: 'Harmony in relationships is more important than fighting for my desires', category: 'accommodating' }
         ],
         results: {
             'collaborative': {
                 title: 'Collaborative Problem Solver',
                 icon: '🤝',
-                description: 'Kamu adalah collaborative problem solver! Kamu mencari solusi win-win dan mempertimbangkan kebutuhan semua pihak. Ini adalah cara paling sehat untuk mengatasi konflik.'
+                description: 'You are a collaborative problem solver! You seek win-win solutions and consider the needs of all parties. This is the healthiest way to handle conflict.'
             },
             'accommodating': {
                 title: 'Accommodating Peacemaker',
                 icon: '🕊️',
-                description: 'Kamu cenderung accommodating dalam konflik. Kamu menghargai harmony tapi sering mengorbankan kebutuhanmu sendiri. Ingat bahwa kebutuhanmu juga penting dan valid.'
+                description: 'You tend to be accommodating in conflicts. You value harmony but often sacrifice your own needs. Remember that your needs are also important and valid.'
             },
             'avoiding': {
                 title: 'Conflict Avoider',
                 icon: '🙈',
-                description: 'Kamu cenderung menghindari konflik. Ini mungkin terasa aman jangka pendek, tapi masalah yang tidak diselesaikan bisa menumpuk. Cobalah untuk lebih proaktif dalam mengatasi isu.'
+                description: 'You tend to avoid conflict. This may feel safe in the short term, but unresolved issues can pile up. Try to be more proactive in addressing issues.'
             },
             'competing': {
                 title: 'Competitive Debater',
                 icon: '⚔️',
-                description: 'Kamu kompetitif dalam konflik dan fokus untuk menang. Kamu tegas tapi perlu ingat bahwa hubungan bukan tentang siapa yang benar. Dengarkan juga sudut pandang orang lain.'
+                description: 'You are competitive in conflicts and focus on winning. You are assertive but need to remember that relationships are not about who is right. Also listen to other people\'s perspectives.'
             }
         }
     }
@@ -185,7 +185,7 @@ function loadQuestion() {
     
     // Update question number
     document.getElementById('question-number').textContent = 
-        `Pertanyaan ${currentQuestionIndex + 1} dari ${totalQuestions}`;
+        `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
     
     // Update question text
     document.getElementById('question-text').textContent = currentQuestions[currentQuestionIndex].text;
@@ -209,9 +209,9 @@ function loadQuestion() {
     
     // Update next button text
     if (currentQuestionIndex === totalQuestions - 1) {
-        document.getElementById('next-btn').textContent = 'Lihat Hasil →';
+        document.getElementById('next-btn').textContent = 'View Results →';
     } else {
-        document.getElementById('next-btn').textContent = 'Selanjutnya →';
+        document.getElementById('next-btn').textContent = 'Next →';
     }
 }
 
@@ -297,14 +297,14 @@ function showResults(result, totalScore, categoryScores) {
     // Build score breakdown HTML
     let detailsHTML = `
         <div class="result-score">
-            <h3>Skor Total: ${totalScore} dari ${currentQuestions.length * 5}</h3>
+            <h3>Total Score: ${totalScore} out of ${currentQuestions.length * 5}</h3>
             <div class="score-bar">
                 <div class="score-fill" style="width: ${(totalScore / (currentQuestions.length * 5)) * 100}%"></div>
             </div>
         </div>
         
         <div class="category-breakdown">
-            <h3>Breakdown Skor per Kategori:</h3>
+            <h3>Score Breakdown by Category:</h3>
             <div class="category-scores">
     `;
     
@@ -335,12 +335,12 @@ function showResults(result, totalScore, categoryScores) {
         </div>
         
         <div class="result-tips">
-            <h3>Rekomendasi untuk Kamu:</h3>
+            <h3>Recommendations for You:</h3>
             <ul>
-                <li>Pelajari lebih dalam tentang ${result.title} dan bagaimana ini mempengaruhi hubunganmu</li>
-                <li>Komunikasikan hasil quiz ini dengan pasangan atau orang terdekat untuk saling memahami</li>
-                <li>Gunakan pemahaman ini untuk membangun hubungan yang lebih sehat</li>
-                <li>Ingat bahwa tidak ada hasil yang "salah" - setiap orang unik!</li>
+                <li>Learn more about ${result.title} and how it affects your relationships</li>
+                <li>Share these quiz results with your partner or loved ones for mutual understanding</li>
+                <li>Use this insight to build healthier relationships</li>
+                <li>Remember that there are no "wrong" results - everyone is unique!</li>
             </ul>
         </div>
     `;
@@ -350,7 +350,7 @@ function showResults(result, totalScore, categoryScores) {
 
 // Exit Quiz
 function exitQuiz() {
-    if (confirm('Apakah kamu yakin ingin keluar? Progress kamu akan hilang.')) {
+    if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
         backToSelection();
     }
 }

@@ -34,14 +34,18 @@
 
 .ribbon {
     position: absolute;
-    top: 0;
+    height: auto;
+    width: 50rem;
+    z-index: 1;
+    top: 0rem;
+    right: 0rem;
 }
 
 /* Quiz Header */
 .quiz-header {
     text-align: center;
     margin-bottom: 50px;
-    margin-top: 0rem;
+    margin-top: 15rem;
     position: relative;
     z-index: 1;
 }
