@@ -28,7 +28,7 @@
                 <div class="quiz-list-item" onclick="startQuiz('love-language')">
                     <div class="quiz-list-icon">💕</div>
                     <div class="quiz-list-content">
-                        <h3 class="quiz-list-title">Your Language of Love</h3>
+                        <h3 class="quiz-list-title">Love Language Quiz</h3>
                         <p class="quiz-list-description">Discover how you give and receive affection in relationships.</p>
                         <div class="quiz-list-meta">
                             <span>⏱️ 5 minutes</span>
